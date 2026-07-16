@@ -1,0 +1,44 @@
+*** HASIL KONSILI DISCORD III - MEETING ROOM 1 | IT D DISCORD ***
+
+*>. Ide game dari Tio:*
+- Gunting Batu Kertas / Nyerang Deffend Energi.
+
+*>. Ide game dari David:*
+- Ngecat rumah (jadi tukang lohya).
+- Lorenya dunia lagi suram suramnya, hitam dan putih. Tujuannya mewarnai hidup.
+- Biru (biasa), hijau (terampolin).
+>> References: https://www.instagram.com/reel/Da1C8b1xjRD/?igsh=MWl0bTVxZm1nMjBzYg== <<
+>> Note      : Kek gini lah nanti game nya, kita buat track2 nya sendiri; Ntar cuman kita ada aim aja sih buat ngarahin <<
+
+*>. Ide game dari Yovan:*
+- Referensi game dari Russian Roulette.
+- Ada sistem ekonomi (uang dan shop).
+- Setiap kali selesai permainan, player mendapatkan EXP dan uang.
+- Ada item buat penunjang match (misal heal, acak isi peluru, dll).
+- Game bersifat endless, dapat dimainkan berulang kali.
+- Game mula mula melawan 1 orang, akan bisa melawan lebih dari 1 orang (maks 4) dengan sistem unlock (bisa memakai experience level atau uang).
+- Ada upgrade an.
+
+-=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=-
+
+*>. Pengembangan Game David*
+- Judul: Color.IO
+
+- Lore :
+>> Dunia kehilangan semua warna karena makhluk bernama The Void.
+>> Semua benda masih ada, tapi kehilangan "jiwanya".
+>> Player adalah pelukis terakhir yang bisa mengembalikan warna.
+>> Semakin banyak warna kembali...
+>> Dunia mulai hidup lagi.
+
+- Gameplay:
+>> Masuk level.
+>> Cari sumber warna.
+>> Warnai dunia.
+>> Unlock mekanik baru.
+>> Buka area berikutnya.
+
+- Mekanisme:
+>> Biru  -> Buat jalan normal.
+>> Hijau -> Buat lompat (trampolin).
+>> Ungu  -> Teleportasi (opsional tergantung programmernya [Inisial Titan4]).
