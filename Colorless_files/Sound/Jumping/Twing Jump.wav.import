@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://2evqyno0u1ps"
+path="res://.godot/imported/Twing Jump.wav-808bd1c1858d625ce14b687160ea67d9.sample"
+
+[deps]
+
+source_file="res://Colorless_files/Sound/Jumping/Twing Jump.wav"
+dest_files=["res://.godot/imported/Twing Jump.wav-808bd1c1858d625ce14b687160ea67d9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dk8vo1xp41vu6"]
+
+[ext_resource type="Texture2D" uid="uid://bkp5q2xwxxhfo" path="res://Colorless_files/Art/Tiles/Spike.png" id="1_bcmir"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rwt8a"]
+texture = ExtResource("1_bcmir")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_102va"]
+sources/0 = SubResource("TileSetAtlasSource_rwt8a")
+
+[node name="Spike" type="TileMapLayer" unique_id=375803085]
+tile_set = SubResource("TileSet_102va")

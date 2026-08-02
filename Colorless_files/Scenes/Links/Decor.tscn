@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://1gffkf0j38j4"]
+
+[ext_resource type="Texture2D" uid="uid://2s1oyvty2ax" path="res://Colorless_files/Art/Tiles/Decor.png" id="1_1re0s"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vhlst"]
+texture = ExtResource("1_1re0s")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_sinmp"]
+sources/0 = SubResource("TileSetAtlasSource_vhlst")
+
+[node name="Decor" type="TileMapLayer" unique_id=1027154604]
+tile_set = SubResource("TileSet_sinmp")
