@@ -9,14 +9,19 @@ static func check_trampoline(
 	grid_cols: int,
 	grid_rows: int
 ) -> float:
-	var bottom_y = rect.position.y + rect.size.y
-	var center_x = rect.position.x + rect.size.x / 2.0
-	var cell = tilemap.local_to_map(tilemap.to_local(Vector2(center_x, bottom_y + 2)))
-	var atlas = tilemap.get_cell_atlas_coords(cell)
-	var color = PaintSystem.get_tile_color(tilemap, cell, grid_cols, grid_rows)
-	print("cell=", cell, " atlas=", atlas, " color=", color, " grid=", grid_cols, "x", grid_rows)
-	if color == 2:
-		return -sqrt(2 * gravity * bounce_height)
+	var bottom_y = rect.position.y + rect.size.y + 2
+	var left_x = rect.position.x + 1
+	var right_x = rect.position.x + rect.size.x - 1
+
+	var cell_left = tilemap.local_to_map(tilemap.to_local(Vector2(left_x, bottom_y)))
+	var cell_right = tilemap.local_to_map(tilemap.to_local(Vector2(right_x, bottom_y)))
+
+	for x in range(cell_left.x, cell_right.x + 1):
+		var cell = Vector2i(x, cell_left.y)
+		var color = PaintSystem.get_tile_color(tilemap, cell, grid_cols, grid_rows)
+		if color == 2:
+			return -sqrt(2 * gravity * bounce_height)
+
 	return current_velocity_y
 
 static func check_spike(

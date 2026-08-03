@@ -84,8 +84,6 @@ func _physics_process(delta):
 	var rect := _get_shape_global_rect()
 
 	if is_on_floor():
-
-
 		velocity.y = HazardSystem.check_trampoline(
 			tilemap, rect, gravity, bounce_height, velocity.y, grid_cols, grid_rows
 		)

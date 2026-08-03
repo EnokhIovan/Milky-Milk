@@ -2,7 +2,22 @@ class_name PaintSystem
 
 
 static func calculate_grid_size(tilemap: TileMapLayer) -> Vector2i:
-	return Vector2i(6, 4)
+	var atlas_source := tilemap.tile_set.get_source(0) as TileSetAtlasSource
+
+	if atlas_source == null:
+		push_error("Source 0 bukan TileSetAtlasSource, cek tileset kamu")
+		return Vector2i(6, 4)
+
+	var texture_size: Vector2 = atlas_source.texture.get_size()
+	var tile_size: Vector2i = tilemap.tile_set.tile_size
+
+	var total_cols: int = int(texture_size.x / tile_size.x)
+	var total_rows: int = int(texture_size.y / tile_size.y)
+
+	var grid_cols = total_cols / 2
+	var grid_rows = total_rows / 2
+
+	return Vector2i(grid_cols, grid_rows)
 
 
 static func paint_one(

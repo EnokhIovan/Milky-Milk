@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://dtb8r1tgmdww"]
 
+[ext_resource type="PackedScene" uid="uid://wgfa6o4pfrcc" path="res://Colorless_files/Scenes/Links/Background.tscn" id="1_kraas"]
 [ext_resource type="PackedScene" uid="uid://bf88xsae3bdmw" path="res://Colorless_files/Scenes/Links/Player.tscn" id="1_whxol"]
 [ext_resource type="PackedScene" uid="uid://cq5n3xypxjgqf" path="res://Colorless_files/Scenes/Links/Ground.tscn" id="2_ajya5"]
 [ext_resource type="PackedScene" uid="uid://dk8vo1xp41vu6" path="res://Colorless_files/Scenes/Links/Spike.tscn" id="3_3sb6x"]
@@ -7,12 +8,14 @@
 
 [node name="Level1" type="Node2D" unique_id=670303894]
 
+[node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("1_kraas")]
+
 [node name="CharacterBody2D" parent="." unique_id=1002194499 instance=ExtResource("1_whxol")]
 tilemap_path = NodePath("../Ground")
 spike_tilemap_path = NodePath("../Spike")
 
 [node name="Ground" parent="." unique_id=1623240245 instance=ExtResource("2_ajya5")]
-tile_map_data = PackedByteArray("AAD+/wIAAAABAAAAAAD//wIAAAAHAAAAAAAAAAIAAAAHAAAAAAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAACAAEAAAABAAAAAAACAAIAAAABAAAAAAADAAIAAAABAAAAAAADAAEAAAABAAAAAAAEAAEAAAABAAAAAAAFAAEAAAABAAAAAAA=")
+tile_map_data = PackedByteArray("AADr/wkAAAAHAAAAAADs/wkAAAAHAAAAAADt/wkAAAAHAAAAAADu/wkAAAAHAAAAAADv/wkAAAAHAAAAAADw/wkAAAAHAAAAAADx/wkAAAAHAAAAAADy/wkAAAAHAAAAAADz/wkAAAAHAAAAAAD0/wkAAAAHAAAAAAD1/wkAAAAHAAAAAAD2/wkAAAAHAAAAAAD3/wkAAAAHAAAAAAD4/wkAAAAHAAAAAAD5/wkAAAAHAAAAAAD6/wkAAAAHAAAAAAD7/wkAAAAHAAAAAAD8/wkAAAAHAAAAAAD9/wkAAAAHAAAAAAD+/wkAAAAHAAAAAAD//wkAAAAHAAAAAAAAAAkAAAAHAAAAAAABAAkAAAAHAAAAAAACAAkAAAAHAAAAAAADAAkAAAAHAAAAAAAEAAkAAAAHAAAAAAAFAAkAAAAHAAAAAAAGAAkAAAAHAAAAAAAHAAkAAAAHAAAAAAAIAAkAAAAHAAAAAAAJAAkAAAAHAAAAAAAKAAkAAAAHAAAAAAALAAkAAAAHAAAAAAAMAAkAAAAHAAAAAAANAAkAAAAHAAAAAAAOAAkAAAAHAAAAAAAPAAkAAAAHAAAAAAAQAAkAAAAHAAAAAAARAAkAAAAHAAAAAAASAAkAAAAHAAAAAAATAAkAAAAHAAAAAAAUAAkAAAAHAAAAAAA=")
 
 [node name="Spike" parent="." unique_id=375803085 instance=ExtResource("3_3sb6x")]
 
