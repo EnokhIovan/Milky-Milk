@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cf8qqih2uur4l"]
+
+[ext_resource type="Script" uid="uid://cwjqux1u840b0" path="res://Colorless_files/Scenes/Code/trigger_cam.gd" id="1_1kbtq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u304b"]
+
+[node name="Trigger Cam" type="Area2D" unique_id=1501787538]
+position = Vector2(0, -5)
+script = ExtResource("1_1kbtq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1939211830]
+shape = SubResource("CircleShape2D_u304b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

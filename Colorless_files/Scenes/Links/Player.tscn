@@ -55,7 +55,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Idle",
-"speed": 9.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -87,7 +87,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"Paint",
-"speed": 9.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -116,7 +116,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Walk",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrjh"]
@@ -128,8 +128,8 @@ script = ExtResource("1_w256q")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1328080727]
 position = Vector2(-5, 11)
 sprite_frames = SubResource("SpriteFrames_sinmp")
-animation = &"Idle"
-frame_progress = 0.81198686
+animation = &"Walk"
+frame_progress = 0.043240406
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1282582403]
 position = Vector2(-11, 22.5)
@@ -139,3 +139,7 @@ shape = SubResource("RectangleShape2D_fjrjh")
 position = Vector2(0, 1)
 scale = Vector2(0.55582803, 1.3487805)
 zoom = Vector2(2, 2)
+limit_left = -338
+limit_top = -164
+limit_right = 335
+limit_bottom = 164

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Colorless"
-run/main_scene="uid://dtb8r1tgmdww"
+run/main_scene="uid://v5m4yo0ruxu"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
