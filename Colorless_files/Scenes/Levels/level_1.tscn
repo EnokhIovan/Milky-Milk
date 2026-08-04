@@ -27,10 +27,10 @@ tile_map_data = PackedByteArray("AAARAPr/AAAGAAEAAADs/wcAAAAGAAIAAAD8//r/AAAAAAI
 tile_map_data = PackedByteArray("AAANAPr/AAABAAAAAAAOAPr/AAABAAAAAAAPAPr/AAABAAAAAAAQAPr/AAABAAAAAAARAPr/AAABAAAAAAASAPr/AAABAAAAAAATAPr/AAABAAAAAADr/wcAAAABAAAAAADs/wcAAAABAAAAAADt/wYAAAAAAAAAAADu/wYAAAABAAAAAADv/wYAAAABAAAAAADw/wUAAAADAAAAAAA=")
 
 [node name="CharacterBody2D" parent="." unique_id=1002194499 instance=ExtResource("1_whxol")]
-position = Vector2(-282, 67)
+position = Vector2(-283, 112)
 can_jump = false
 fall_limit_y = 150.0
-allowed_colors = Array[int]([1, 2, 3, 4])
+allowed_colors = Array[int]([1, 2, 3])
 tilemap_path = NodePath("../Ground")
 spike_tilemap_path = NodePath("../Spike")
 
@@ -41,3 +41,4 @@ zoom_duration = 1.0
 
 [node name="Trigger Cam" parent="." unique_id=1501787538 instance=ExtResource("7_3pbrt")]
 position = Vector2(-246, 84)
+	

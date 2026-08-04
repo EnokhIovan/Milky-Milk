@@ -5,14 +5,14 @@ var _players: Array[AudioStreamPlayer] = []
 var _next_player := 0
 
 const SFX_FOLDERS := {
-	"bounce": "res://Colorless_files/Sound/Jumping/Bounce/",
-	"paint": "res://Colorless_files/Sound/Painting/",
-	"walk_cape": "res://Colorless_files/Sound/Walking/Cape/",
-	"walk_mud": "res://Colorless_files/Sound/Walking/Mud/",
+	"bounce": "res://Colorless_files/Sound/SFX/Jumping/Bounce/",
+	"paint": "res://Colorless_files/Sound/SFX/Painting/",
+	"walk_cape": "res://Colorless_files/Sound/SFX/Walking/Cape/",
+	"walk_mud": "res://Colorless_files/Sound/SFX/Walking/Mud/",
 }
 const SINGLE_FILES := {
-	"landing": "res://Colorless_files/Sound/Landing.wav",
-	"jump": "res://Colorless_files/Sound/Jumping/Twing Jump.wav",
+	"landing": "res://Colorless_files/Sound/SFX/Landing.wav",
+	"jump": "res://Colorless_files/Sound/SFX/Jumping/Twing Jump.wav",
 }
 
 func _ready() -> void:

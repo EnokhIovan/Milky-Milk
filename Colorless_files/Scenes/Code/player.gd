@@ -51,7 +51,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	if is_on_floor() and can_jump and Input.is_action_just_pressed("ui_accept"):
+	if is_on_floor() and can_jump and Input.is_action_just_pressed("ui_up"):
 		velocity.y = -sqrt(2 * gravity * jump_height)
 		Audio.play("jump")
 
@@ -86,6 +86,12 @@ func _physics_process(delta):
 	velocity.x = direction * speed
 	move_and_slide()
 
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+
+		if collision.get_collider() == spike_tilemap:
+			die()
+
 	var rect := _get_shape_global_rect()
 
 	if is_on_floor():
@@ -96,8 +102,8 @@ func _physics_process(delta):
 			Audio.play("bounce")
 		velocity.y = new_vel_y
 
-	if HazardSystem.check_spike(spike_tilemap, rect):
-		die()
+	#if HazardSystem.check_spike(spike_tilemap, rect):
+		#die()
 
 	_check_landing()
 

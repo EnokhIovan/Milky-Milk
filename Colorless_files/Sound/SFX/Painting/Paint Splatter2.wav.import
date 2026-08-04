@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cgyfq0g0014qv"
+path="res://.godot/imported/Paint Splatter2.wav-4da45cd212ddce8fe12ac07edc97f7d3.sample"
+
+[deps]
+
+source_file="res://Colorless_files/Sound/SFX/Painting/Paint Splatter2.wav"
+dest_files=["res://.godot/imported/Paint Splatter2.wav-4da45cd212ddce8fe12ac07edc97f7d3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
