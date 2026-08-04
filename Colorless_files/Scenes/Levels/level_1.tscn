@@ -27,7 +27,7 @@ tile_map_data = PackedByteArray("AAARAPr/AAAGAAEAAADs/wcAAAAGAAIAAAD8//r/AAAAAAI
 tile_map_data = PackedByteArray("AAANAPr/AAABAAAAAAAOAPr/AAABAAAAAAAPAPr/AAABAAAAAAAQAPr/AAABAAAAAAARAPr/AAABAAAAAAASAPr/AAABAAAAAAATAPr/AAABAAAAAADr/wcAAAABAAAAAADs/wcAAAABAAAAAADt/wYAAAAAAAAAAADu/wYAAAABAAAAAADv/wYAAAABAAAAAADw/wUAAAABAAAAAAA=")
 
 [node name="CharacterBody2D" parent="." unique_id=1002194499 instance=ExtResource("1_whxol")]
-position = Vector2(-282, 67)
+position = Vector2(-283, 112)
 tilemap_path = NodePath("../Ground")
 spike_tilemap_path = NodePath("../Spike")
 
