@@ -126,11 +126,12 @@ func die() -> void:
 		return
 	is_dead = true
 	velocity = Vector2.ZERO
+	Audio.play("dead")
 	var tween = create_tween()
 	for i in range(5):
 		tween.tween_property(sprite, "modulate:a", 0.0, 0.1)
 		tween.tween_property(sprite, "modulate:a", 1.0, 0.1)
-	tween.tween_callback(_do_respawn)
+	tween.tween_callback(_do_respawn)	
 
 func _do_respawn() -> void:
 	global_position = spawn_position

@@ -13,6 +13,7 @@ const SFX_FOLDERS := {
 const SINGLE_FILES := {
 	"landing": "res://Colorless_files/Sound/SFX/Landing.wav",
 	"jump": "res://Colorless_files/Sound/SFX/Jumping/Twing Jump.wav",
+	"dead": "res://Colorless_files/Sound/SFX/Dead.wav",
 }
 
 func _ready() -> void:
