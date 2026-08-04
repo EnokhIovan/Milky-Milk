@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcpa3yhqafdga"
+path="res://.godot/imported/Pijar Kelabu BGM - Raining.wav-a44cc2fc11eec21afba2f794421b669d.sample"
+
+[deps]
+
+source_file="res://Colorless_files/Sound/Musik/Pijar Kelabu/Pijar Kelabu BGM - Raining.wav"
+dest_files=["res://.godot/imported/Pijar Kelabu BGM - Raining.wav-a44cc2fc11eec21afba2f794421b669d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
