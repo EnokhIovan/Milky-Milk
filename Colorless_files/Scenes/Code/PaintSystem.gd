@@ -1,102 +1,61 @@
 class_name PaintSystem
 
-
-static func calculate_grid_size(tilemap: TileMapLayer) -> Vector2i:
-	var atlas_source := tilemap.tile_set.get_source(0) as TileSetAtlasSource
-
-	if atlas_source == null:
+# Bangun lookup table: [shape_id, color] -> atlas_coords
+# Panggil sekali aja waktu _ready, simpan hasilnya, terus lempar ke paint_one().
+static func build_color_lookup(tilemap: TileMapLayer) -> Dictionary:
+	var lookup := {}
+	var source := tilemap.tile_set.get_source(0) as TileSetAtlasSource
+	if source == null:
 		push_error("Source 0 bukan TileSetAtlasSource, cek tileset kamu")
-		return Vector2i(6, 4)
+		return lookup
 
-	var texture_size: Vector2 = atlas_source.texture.get_size()
-	var tile_size: Vector2i = tilemap.tile_set.tile_size
+	for i in source.get_tiles_count():
+		var atlas_coords: Vector2i = source.get_tile_id(i)
+		var tile_data := source.get_tile_data(atlas_coords, 0)
+		if tile_data == null:
+			continue
+		var shape_id: int = tile_data.get_custom_data("shape_id")
+		var color: int = tile_data.get_custom_data("color")
+		lookup[[shape_id, color]] = atlas_coords
 
-	var total_cols: int = int(texture_size.x / tile_size.x)
-	var total_rows: int = int(texture_size.y / tile_size.y)
-
-	var grid_cols = total_cols / 2
-	var grid_rows = total_rows / 2
-
-	return Vector2i(grid_cols, grid_rows)
+	return lookup
 
 
 static func paint_one(
 	tilemap: TileMapLayer,
 	cell: Vector2i,
 	current_color: int,
-	grid_cols: int,
-	grid_rows: int
+	color_lookup: Dictionary
 ) -> void:
 	var source_id = tilemap.get_cell_source_id(cell)
-
 	if source_id == -1:
 		return
 
-	if grid_cols == 0 or grid_rows == 0:
+	var tile_data := tilemap.get_cell_tile_data(cell)
+	if tile_data == null:
 		return
 
-	var atlas_source := tilemap.tile_set.get_source(source_id) as TileSetAtlasSource
+	var shape_id: int = tile_data.get_custom_data("shape_id")
+	var key = [shape_id, current_color]
 
-	if atlas_source == null:
-		return
-
-	var atlas = tilemap.get_cell_atlas_coords(cell)
-
-	var shape_x = atlas.x % grid_cols
-	var shape_y = atlas.y % grid_rows
-
-	var new_atlas: Vector2i
-
-	match current_color:
-		0:
-			new_atlas = Vector2i(shape_x, shape_y)
-		1:
-			new_atlas = Vector2i(
-				shape_x + grid_cols,
-				shape_y
-			)
-		2:
-			new_atlas = Vector2i(
-				shape_x + grid_cols,
-				shape_y + grid_rows
-			)
-		_:
-			new_atlas = atlas
-
-	if not atlas_source.has_tile(new_atlas):
+	if not color_lookup.has(key):
 		push_warning(
-			"Tile atlas %s belum dibuat di TileSet editor!"
-			% str(new_atlas)
+			"Kombinasi shape_id %s + color %s belum ada di tileset!"
+			% [shape_id, current_color]
 		)
 		return
 
-	tilemap.set_cell(
-		cell,
-		source_id,
-		new_atlas
-	)
+	var new_atlas: Vector2i = color_lookup[key]
+	tilemap.set_cell(cell, source_id, new_atlas)
 
 
-static func get_tile_color(
-	tilemap: TileMapLayer,
-	cell: Vector2i,
-	grid_cols: int,
-	grid_rows: int
-) -> int:
+static func get_tile_color(tilemap: TileMapLayer, cell: Vector2i) -> int:
 	var source = tilemap.get_cell_source_id(cell)
-
 	if source == -1:
 		return -1
 
-	var atlas = tilemap.get_cell_atlas_coords(cell)
+	var tile_data := tilemap.get_cell_tile_data(cell)
+	if tile_data == null:
+		return -1
 
-	if atlas.y < grid_rows and atlas.x < grid_cols:
-		return 0
-
-	if atlas.y < grid_rows and atlas.x >= grid_cols:
-		return 1
-
-	if atlas.y >= grid_rows and atlas.x >= grid_cols:
-		return 2
-
-	return 3
+	return tile_data.get_custom_data("color")

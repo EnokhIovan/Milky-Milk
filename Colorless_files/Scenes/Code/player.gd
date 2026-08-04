@@ -1,19 +1,23 @@
 extends CharacterBody2D
+
 @export var speed := 150.0
 @export var shoot_range := 300.0
 @export var gravity := 800.0
 @export var jump_height := 32.0
+@export var can_jump := true
 @export var bounce_height := 64.0
 @export var fall_limit_y := 672.0
+@export var allowed_colors: Array[int] = [0, 1, 2, 3]
 @export var tilemap_path: NodePath
 @export var spike_tilemap_path: NodePath
+
 var is_painting := false
 var is_dead := false
 var current_color := 0
 var spawn_position: Vector2
-var grid_cols := 0
-var grid_rows := 0
+var color_lookup: Dictionary = {}
 var _was_on_floor := true
+
 @onready var sprite = $AnimatedSprite2D
 @onready var collision_shape = $CollisionShape2D
 @onready var tilemap: TileMapLayer = get_node(tilemap_path)
@@ -23,16 +27,23 @@ func _ready():
 	MusicPlayer.play("main")
 	add_to_group("player")
 	sprite.animation_finished.connect(_on_animation_finished)
-	var grid = PaintSystem.calculate_grid_size(tilemap)
-	grid_cols = grid.x
-	grid_rows = grid.y
+	color_lookup = PaintSystem.build_color_lookup(tilemap)
 	sprite.play("Idle")
 	spawn_position = global_position
 	_was_on_floor = is_on_floor()
+	_validate_allowed_colors()
+
+func _validate_allowed_colors() -> void:
+	if allowed_colors.size() > 4:
+		push_warning("allowed_colors punya lebih dari 4 elemen, cek lagi isinya!")
+	for c in allowed_colors:
+		if c < 0 or c > 3:
+			push_warning("allowed_colors berisi nilai gak valid: %s (harus 0-3)" % c)
 
 func _physics_process(delta):
 	if is_dead:
 		return
+
 	if global_position.y > fall_limit_y:
 		die()
 		return
@@ -40,16 +51,19 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	if is_on_floor() and Input.is_action_just_pressed("ui_accept"):
+	if is_on_floor() and can_jump and Input.is_action_just_pressed("ui_accept"):
 		velocity.y = -sqrt(2 * gravity * jump_height)
 		Audio.play("jump")
 
-	if Input.is_action_just_pressed("color_1"):
+	if Input.is_action_just_pressed("color_1") and 0 in allowed_colors:
 		current_color = 0
-	if Input.is_action_just_pressed("color_2"):
+	if Input.is_action_just_pressed("color_2") and 1 in allowed_colors:
 		current_color = 1
-	if Input.is_action_just_pressed("color_3"):
+	if Input.is_action_just_pressed("color_3") and 2 in allowed_colors:
 		current_color = 2
+	if Input.is_action_just_pressed("color_4") and 3 in allowed_colors:
+		current_color = 3
+
 	if Input.is_action_just_pressed("paint"):
 		shoot_paint(get_global_mouse_position())
 		Audio.play("paint")
@@ -68,13 +82,15 @@ func _physics_process(delta):
 	else:
 		if sprite.animation != "Idle":
 			sprite.play("Idle")
+
 	velocity.x = direction * speed
 	move_and_slide()
 
 	var rect := _get_shape_global_rect()
+
 	if is_on_floor():
 		var new_vel_y = HazardSystem.check_trampoline(
-			tilemap, rect, gravity, bounce_height, velocity.y, grid_cols, grid_rows
+			tilemap, rect, gravity, bounce_height, velocity.y
 		)
 		if new_vel_y != velocity.y:
 			Audio.play("bounce")
@@ -130,4 +146,4 @@ func shoot_paint(target_pos: Vector2) -> void:
 	var direction = to_target.normalized()
 	var final_pos = global_position + direction * distance
 	var cell = tilemap.local_to_map(tilemap.to_local(final_pos))
-	PaintSystem.paint_one(tilemap, cell, current_color, grid_cols, grid_rows)
+	PaintSystem.paint_one(tilemap, cell, current_color, color_lookup)

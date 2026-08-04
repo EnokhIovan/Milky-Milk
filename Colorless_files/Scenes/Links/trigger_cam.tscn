@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cf8qqih2uur4l"]
 
-[ext_resource type="Script" uid="uid://cwjqux1u840b0" path="res://Colorless_files/Scenes/Code/trigger_cam.gd" id="1_1kbtq"]
+[ext_resource type="Script" uid="uid://c4lx3ia36k3jf" path="res://Colorless_files/Scenes/Code/trigger_cam.gd" id="1_1kbtq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u304b"]
 
