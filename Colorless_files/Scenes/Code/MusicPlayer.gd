@@ -5,6 +5,7 @@ const TRACKS := {
 	"raining": "res://Colorless_files/Sound/Musik/Pijar Kelabu/Pijar Kelabu BGM - Raining.wav",
 	"harmoni": "res://Colorless_files/Sound/Musik/Pijar Kelabu/Pijar Kelabu - Harmoni.wav",
 	"homescreen": "res://Colorless_files/Sound/Musik/Melodi Chromata.wav",
+	"bgm-aura_prisma": "res://Colorless_files/Sound/Musik/Aura Prisma BGM.wav"
 }
 const FADE_TIME := 1.5
 
