@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed := 150.0
-@export var shoot_range := 300.0
+@export var shoot_range := 150.0
 @export var gravity := 800.0
 @export var jump_height := 32.0
 @export var can_jump := true
