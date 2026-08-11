@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://6lto866sxjce"]
 
-[ext_resource type="Script" uid="uid://dtm7j6jiuib6x" path="res://Colorless_files/Scenes/Code/TileDustParticles.gd" id="1_pf3j1"]
+[ext_resource type="Script" uid="uid://dtm7j6jiuib6x" path="res://Colorless_files/Scenes/Code/TileDustParticles.gd" id="1_mc2s3"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_82ry6"]
 particle_flag_disable_z = true
@@ -20,4 +20,4 @@ one_shot = true
 explosiveness = 0.23
 fixed_fps = 24
 process_material = SubResource("ParticleProcessMaterial_82ry6")
-script = ExtResource("1_pf3j1")
+script = ExtResource("1_mc2s3")

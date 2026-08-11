@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://11kgo1t5akb1"]
+
+[ext_resource type="Script" uid="uid://glnxqo0646eq" path="res://Colorless_files/Scenes/UI/home.gd" id="1_rtan1"]
+[ext_resource type="Texture2D" uid="uid://cpf3lfksy2nen" path="res://Colorless_files/Art/Background/Background.png" id="2_cm8r6"]
+[ext_resource type="Texture2D" uid="uid://c0woa1ebed25b" path="res://Colorless_files/Art/GUI/Icon/Menu1.png" id="2_tuwqx"]
+[ext_resource type="Texture2D" uid="uid://by14amktwpyte" path="res://Colorless_files/Art/GUI/Icon/Start.png" id="3_ojyrp"]
+[ext_resource type="Texture2D" uid="uid://cw1awfw8ufitt" path="res://Colorless_files/Art/Movement/Idle/1.png" id="3_wrjux"]
+[ext_resource type="Texture2D" uid="uid://c41m5b2nd0ed0" path="res://Colorless_files/Art/GUI/Icon/Option.png" id="4_he7hr"]
+[ext_resource type="Texture2D" uid="uid://d4lhbumad4spj" path="res://Colorless_files/Art/Movement/Idle/3.png" id="4_sr2a5"]
+[ext_resource type="Texture2D" uid="uid://ceujvcm0qtbnm" path="res://Colorless_files/Art/GUI/Icon/Exit.png" id="5_7g1qt"]
+[ext_resource type="Texture2D" uid="uid://iowupdj3xbxq" path="res://Colorless_files/Art/Movement/Idle/4.png" id="5_iakcf"]
+[ext_resource type="Texture2D" uid="uid://diiu4isth6v6y" path="res://Colorless_files/Art/Movement/Idle/5.png" id="6_xojew"]
+[ext_resource type="Texture2D" uid="uid://dfeqlbv0dwyc0" path="res://Colorless_files/Art/Movement/Idle/6.png" id="7_1f7qc"]
+[ext_resource type="Texture2D" uid="uid://wn8tvp00f6xc" path="res://Colorless_files/Art/Movement/Idle/7.png" id="8_0rk2u"]
+
+[sub_resource type="Animation" id="Animation_jt0v0"]
+resource_name = "Character1"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_wrjux"), ExtResource("4_sr2a5"), ExtResource("4_sr2a5"), ExtResource("5_iakcf"), ExtResource("6_xojew"), ExtResource("7_1f7qc"), ExtResource("8_0rk2u"), ExtResource("8_0rk2u")]
+}
+
+[sub_resource type="Animation" id="Animation_4rs70"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_wrjux")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mmxp2"]
+_data = {
+&"Character1": SubResource("Animation_jt0v0"),
+&"RESET": SubResource("Animation_4rs70")
+}
+
+[node name="Home" type="Control" unique_id=623321538]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rtan1")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1050934393]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cm8r6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1300313205]
+libraries/ = SubResource("AnimationLibrary_mmxp2")
+autoplay = &"Character1"
+
+[node name="Character" type="TextureRect" parent="." unique_id=1373129365]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 28.0
+offset_right = 1084.0
+offset_bottom = 528.0
+texture = ExtResource("3_wrjux")
+stretch_mode = 5
+flip_h = true
+
+[node name="Papercanvas" type="TextureButton" parent="." unique_id=415800320]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 148.0
+offset_right = 407.0
+offset_bottom = 331.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("2_tuwqx")
+
+[node name="Start" type="TextureButton" parent="." unique_id=1940485867]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 176.0
+offset_right = 327.0
+offset_bottom = 237.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_ojyrp")
+
+[node name="Option" type="TextureButton" parent="." unique_id=2050677914]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 112.0
+offset_top = -54.5
+offset_right = 297.0
+offset_bottom = 9.5
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture_normal = ExtResource("4_he7hr")
+
+[node name="Exit" type="TextureButton" parent="." unique_id=1446797914]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 376.0
+offset_right = 270.0
+offset_bottom = 440.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("5_7g1qt")
+
+[node name="FadeOverlay" type="ColorRect" parent="." unique_id=1278748571]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

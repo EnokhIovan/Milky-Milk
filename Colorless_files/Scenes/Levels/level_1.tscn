@@ -19,6 +19,8 @@ tile_map_data = PackedByteArray("AADs/wkAAAAHAAAAAADt/wkAAAAIAAAAAADr/wkAAAAHAAA
 
 [node name="CharacterBody2D" parent="." unique_id=1002194499 instance=ExtResource("1_whxol")]
 position = Vector2(-296, 144)
+speed = 100.0
+shoot_range = 100.0
 fall_limit_y = 150.0
 allowed_colors = Array[int]([0, 1])
 tilemap_path = NodePath("../Ground")
@@ -48,6 +50,6 @@ position = Vector2(293, -91)
 position = Vector2(229, -90)
 target_zoom = 2.0
 
-[node name="Trigger Cam4" parent="CameraTriggerArr/Trigger Cam4" unique_id=361827283 instance=ExtResource("7_3pbrt")]
-position = Vector2(258, -105)
+[node name="Trigger Cam5" parent="CameraTriggerArr" unique_id=361827283 instance=ExtResource("7_3pbrt")]
+position = Vector2(487, -195)
 target_zoom = 2.0

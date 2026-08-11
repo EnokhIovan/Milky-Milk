@@ -1,7 +1,7 @@
 extends Node
 
 const TRACKS := {
-	"main": "res://Colorless_files/Sound/Musik/Pijar Kelabu/Pijar Kelabu BGM.wav",
+	"main": "res://Colorless_files/Sound/Musik/Melodi Chromata.wav",
 	"raining": "res://Colorless_files/Sound/Musik/Pijar Kelabu/Pijar Kelabu BGM - Raining.wav",
 	"harmoni": "res://Colorless_files/Sound/Musik/Pijar Kelabu/Pijar Kelabu - Harmoni.wav",
 	"homescreen": "res://Colorless_files/Sound/Musik/Melodi Chromata.wav",
