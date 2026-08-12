@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://cq5n3xypxjgqf" path="res://Colorless_files/Scenes/Links/Ground.tscn" id="4_4yjy1"]
 [ext_resource type="PackedScene" uid="uid://dk8vo1xp41vu6" path="res://Colorless_files/Scenes/Links/Spike.tscn" id="5_8dtdd"]
 [ext_resource type="PackedScene" uid="uid://1gffkf0j38j4" path="res://Colorless_files/Scenes/Links/Decor.tscn" id="5_i1fhf"]
-[ext_resource type="PackedScene" uid="uid://cf8qqih2uur4l" path="res://Colorless_files/Scenes/Links/trigger_cam.tscn" id="6_uqnag"]
+[ext_resource type="PackedScene" uid="uid://cf8qqih2uur4l" path="res://Colorless_files/Scenes/Links/TriggerCam.tscn" id="6_uqnag"]
 [ext_resource type="Shader" uid="uid://d1ds6cnuoixvl" path="res://Colorless_files/Scenes/Shaders/distortion.gdshader" id="7_nv4sw"]
-[ext_resource type="Script" uid="uid://dul2cu3gej75f" path="res://Colorless_files/Scenes/Code/gravityField.gd" id="8_b5kqh"]
-[ext_resource type="Script" uid="uid://bvajch7bgttt7" path="res://Colorless_files/Scenes/Code/triggerHeavyMassed.gd" id="9_wdv2d"]
-[ext_resource type="PackedScene" uid="uid://6lto866sxjce" path="res://Colorless_files/Scenes/Links/tile_dust_particles.tscn" id="10_2jue4"]
+[ext_resource type="Script" uid="uid://dul2cu3gej75f" path="res://Colorless_files/Scenes/Code/GravityField.gd" id="8_b5kqh"]
+[ext_resource type="Script" uid="uid://bvajch7bgttt7" path="res://Colorless_files/Scenes/Code/TriggerHeavyMassed.gd" id="9_wdv2d"]
+[ext_resource type="PackedScene" uid="uid://6lto866sxjce" path="res://Colorless_files/Scenes/Links/TileDustParticles.tscn" id="10_2jue4"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_82ry6"]
 lifetime_randomness = 0.33

@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var allowed_colors: Array[int] = [0, 1, 2, 3]
 @export var tilemap_path: NodePath
 @export var spike_tilemap_path: NodePath
+@export var decor_tilemap_path: NodePath
 
 var is_painting := false
 var is_dead := false
@@ -20,8 +21,9 @@ var _was_on_floor := true
 
 @onready var sprite = $AnimatedSprite2D
 @onready var collision_shape = $CollisionShape2D
-@onready var tilemap: TileMapLayer = get_node(tilemap_path)
-@onready var spike_tilemap: TileMapLayer = get_node(spike_tilemap_path)
+@onready var tilemap: TileMapLayer = get_node_or_null(tilemap_path)
+@onready var spike_tilemap: TileMapLayer = get_node_or_null(spike_tilemap_path)
+@onready var decor_tilemap: TileMapLayer = get_node_or_null(decor_tilemap_path)
 
 func _ready():
 	MusicPlayer.play("main")
@@ -106,6 +108,7 @@ func _physics_process(delta):
 		#die()
 
 	_check_landing()
+	check_portal()
 
 func _check_landing() -> void:
 	var on_floor_now := is_on_floor()
@@ -139,6 +142,22 @@ func _do_respawn() -> void:
 	sprite.modulate.a = 1.0
 	sprite.play("Idle")
 	is_dead = false
+
+func check_portal():
+	if decor_tilemap == null:
+		return
+
+	var check_position := global_position + Vector2(0, 16)
+	var cell := decor_tilemap.local_to_map(decor_tilemap.to_local(check_position))
+	var tile_data := decor_tilemap.get_cell_tile_data(cell)
+
+	if tile_data == null:
+		return
+
+	var target_scene = tile_data.get_custom_data("portal")
+
+	if target_scene != "" and Input.is_action_just_pressed("interact"):
+		get_tree().change_scene_to_file(target_scene)
 
 func _on_animation_finished() -> void:
 	if sprite.animation == "Paint":

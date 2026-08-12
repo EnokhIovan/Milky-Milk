@@ -27,6 +27,10 @@ texture = ExtResource("1_1re0s")
 4:2/0 = 0
 5:2/0 = 0
 6:2/0 = 0
+9:1/0 = 0
+9:0/0 = 0
+8:1/0 = 0
+8:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_sinmp"]
 sources/0 = SubResource("TileSetAtlasSource_vhlst")

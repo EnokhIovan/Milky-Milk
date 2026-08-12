@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bh3evbret5cl6"]
+
+[ext_resource type="Texture2D" uid="uid://2s1oyvty2ax" path="res://Colorless_files/Art/Tiles/Decor.png" id="1_lboxv"]
+[ext_resource type="Script" uid="uid://cbbucyyquqhuj" path="res://Colorless_files/Scenes/Code/Portal.gd" id="2_yr5l2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nsk4d"]
+height = 32.0
+
+[node name="Portal" type="Area2D" unique_id=2060445049]
+position = Vector2(0, -16)
+script = ExtResource("2_yr5l2")
+
+[node name="Area2D" type="Sprite2D" parent="." unique_id=1397454988]
+texture = ExtResource("1_lboxv")
+region_enabled = true
+region_rect = Rect2(128, 0, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1223322301]
+shape = SubResource("CapsuleShape2D_nsk4d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

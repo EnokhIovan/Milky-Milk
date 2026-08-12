@@ -5,31 +5,46 @@
 [ext_resource type="PackedScene" uid="uid://bf88xsae3bdmw" path="res://Colorless_files/Scenes/Links/Player.tscn" id="3_rfjr6"]
 [ext_resource type="PackedScene" uid="uid://dk8vo1xp41vu6" path="res://Colorless_files/Scenes/Links/Spike.tscn" id="4_hehcp"]
 [ext_resource type="PackedScene" uid="uid://1gffkf0j38j4" path="res://Colorless_files/Scenes/Links/Decor.tscn" id="4_i66aa"]
-[ext_resource type="PackedScene" uid="uid://cf8qqih2uur4l" path="res://Colorless_files/Scenes/Links/trigger_cam.tscn" id="5_a3vfp"]
+[ext_resource type="PackedScene" uid="uid://cf8qqih2uur4l" path="res://Colorless_files/Scenes/Links/TriggerCam.tscn" id="5_a3vfp"]
+[ext_resource type="PackedScene" uid="uid://bh3evbret5cl6" path="res://Colorless_files/Scenes/Links/Portal.tscn" id="7_hxpfd"]
 
 [node name="level_d" type="Node2D" unique_id=1910671739]
 
 [node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("1_30nc2")]
 
 [node name="Ground" parent="." unique_id=1623240245 instance=ExtResource("2_rfjr6")]
-tile_map_data = PackedByteArray("AADs/wkAAAAHAAAAAADr/wkAAAAHAAAAAADt/wkAAAAHAAAAAADu/wkAAAAHAAAAAADv/wkAAAABAAAAAADx/wUAAAADAAMAAADz/wEAAAADAAMAAAD1//3/AAADAAMAAAD8//3/AAAAAAMAAAAAAP3/AAACAAMAAAD9//3/AAABAAMAAAD+//3/AAABAAMAAAD///3/AAABAAMAAAALAP3/AAAAAAMAAAAMAP3/AAABAAMAAAANAP3/AAABAAMAAAAOAP3/AAABAAMAAAAPAP3/AAABAAMAAAAQAP3/AAACAAMAAAA=")
+tile_map_data = PackedByteArray("AADs/wkAAAAHAAMAAADr/wkAAAAGAAMAAADt/wkAAAAHAAMAAADu/wkAAAAHAAMAAADv/wkAAAACAAMAAADx/wUAAAADAAMAAADz/wEAAAADAAMAAAD1//3/AAADAAMAAAD8//3/AAAAAAMAAAAAAP3/AAABAAMAAAD9//3/AAABAAMAAAD+//3/AAAHAAMAAAD///3/AAAHAAMAAAALAP3/AAAAAAMAAAAMAP3/AAABAAMAAAANAP3/AAABAAMAAAAOAP3/AAABAAMAAAAPAP3/AAAHAAMAAAAQAP3/AAAIAAMAAAABAP3/AAACAAMAAAA=")
 
 [node name="Spike" parent="." unique_id=375803085 instance=ExtResource("4_hehcp")]
 
 [node name="Decor" parent="." unique_id=1027154604 instance=ExtResource("4_i66aa")]
 tile_map_data = PackedByteArray("AAALAPv/AAAGAAAAAAALAPz/AAAGAAEAAAAMAPv/AAAHAAAAAAAMAPz/AAAHAAEAAAA=")
 
-[node name="CharacterBody2D" parent="." unique_id=1002194499 instance=ExtResource("3_rfjr6")]
-position = Vector2(-318, 144)
-tilemap_path = NodePath("../Ground")
-spike_tilemap_path = NodePath("../Spike")
-
-[node name="Node2D" type="Node2D" parent="." unique_id=793159922]
+[node name="TrigCamNode" type="Node2D" parent="." unique_id=793159922]
 position = Vector2(-233, 70)
 
-[node name="Trigger Cam" parent="Node2D" unique_id=1501787538 instance=ExtResource("5_a3vfp")]
+[node name="Trigger Cam" parent="TrigCamNode" unique_id=1501787538 instance=ExtResource("5_a3vfp")]
 position = Vector2(-85, 64)
 
-[node name="Trigger Cam2" parent="Node2D" unique_id=1481347858 instance=ExtResource("5_a3vfp")]
+[node name="Trigger Cam2" parent="TrigCamNode" unique_id=1481347858 instance=ExtResource("5_a3vfp")]
 position = Vector2(0, 0)
 target_zoom = 2.0
+
+[node name="PortalNode" type="Node2D" parent="." unique_id=1964106556]
+
+[node name="toSub1" parent="PortalNode" unique_id=504761103 instance=ExtResource("7_hxpfd")]
+position = Vector2(-16, -64)
+portal_id = "portal1LD"
+target_scene = "uid://dx4dw8sv8e0p2"
+target_portal_id = "portal1S1"
+
+[node name="fromSub1" parent="PortalNode" unique_id=472833840 instance=ExtResource("7_hxpfd")]
+position = Vector2(256, -64)
+portal_id = "portal2LD"
+target_scene = "uid://dx4dw8sv8e0p2"
+target_portal_id = "portal2S1"
+
+[node name="CharacterBody2D" parent="." unique_id=1002194499 instance=ExtResource("3_rfjr6")]
+position = Vector2(-326, 22)
+tilemap_path = NodePath("../Ground")
+spike_tilemap_path = NodePath("../Spike")
