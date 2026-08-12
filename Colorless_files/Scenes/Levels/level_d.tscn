@@ -45,6 +45,6 @@ target_scene = "uid://dx4dw8sv8e0p2"
 target_portal_id = "portal2S1"
 
 [node name="CharacterBody2D" parent="." unique_id=1002194499 instance=ExtResource("3_rfjr6")]
-position = Vector2(-326, 22)
+position = Vector2(-318, 143)
 tilemap_path = NodePath("../Ground")
 spike_tilemap_path = NodePath("../Spike")
