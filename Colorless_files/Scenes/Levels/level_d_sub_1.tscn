@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dx4dw8sv8e0p2"]
 
 [ext_resource type="PackedScene" uid="uid://wgfa6o4pfrcc" path="res://Colorless_files/Scenes/Links/Background.tscn" id="1_4i6kx"]
+[ext_resource type="Script" uid="uid://cvjeq3xoyyp3w" path="res://Colorless_files/Scenes/Code/Level.gd" id="1_w1i6y"]
 [ext_resource type="PackedScene" uid="uid://bf88xsae3bdmw" path="res://Colorless_files/Scenes/Links/Player.tscn" id="2_uio3a"]
 [ext_resource type="PackedScene" uid="uid://cq5n3xypxjgqf" path="res://Colorless_files/Scenes/Links/Ground.tscn" id="3_aptmp"]
 [ext_resource type="Texture2D" uid="uid://bkp5q2xwxxhfo" path="res://Colorless_files/Art/Tiles/Spike.png" id="4_hoeqc"]
@@ -76,33 +77,35 @@ texture = ExtResource("6_w1i6y")
 sources/0 = SubResource("TileSetAtlasSource_26k0e")
 
 [node name="level_d_sub_1" type="Node2D" unique_id=1348431907]
+script = ExtResource("1_w1i6y")
+level_id = "L4S1"
 
 [node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("1_4i6kx")]
 
 [node name="Ground" parent="." unique_id=1623240245 instance=ExtResource("3_aptmp")]
 tile_map_data = PackedByteArray("AAD7/wAAAAAHAAMAAAD6/wAAAAAHAAMAAAD8/wAAAAAIAAMAAAAFAAAAAAAHAAMAAAADAAAAAAAGAAMAAAAEAAAAAAAHAAMAAAAGAAAAAAAIAAMAAAD5/wAAAAAGAAMAAAA=")
 
-[node name="Spike" parent="." unique_id=375803085 instance=ExtResource("4_r2eu1")]
-tile_set = SubResource("TileSet_cph76")
-
-[node name="Decor" parent="." unique_id=1027154604 instance=ExtResource("5_uio3a")]
-tile_set = SubResource("TileSet_5i8r2")
-
 [node name="PortalNode" type="Node2D" parent="." unique_id=1903990132]
 
 [node name="portal" parent="PortalNode" unique_id=2060445049 instance=ExtResource("7_hoeqc")]
-position = Vector2(-81, -16)
+position = Vector2(-81, 0)
 portal_id = "portal1S1"
 target_scene = "uid://bpoic5elx0rns"
 target_portal_id = "portal1LD"
 
 [node name="portal2" parent="PortalNode" unique_id=55867837 instance=ExtResource("7_hoeqc")]
-position = Vector2(80, -16)
+position = Vector2(80, 0)
 portal_id = "portal2S1"
 target_scene = "uid://bpoic5elx0rns"
 target_portal_id = "portal2LD"
 
-[node name="CharacterBody2D" parent="." unique_id=1002194499 instance=ExtResource("2_uio3a")]
+[node name="Player" parent="." unique_id=1002194499 instance=ExtResource("2_uio3a")]
 position = Vector2(-81, 0)
 tilemap_path = NodePath("../Ground")
 spike_tilemap_path = NodePath("../Spike")
+
+[node name="Spike" parent="." unique_id=375803085 instance=ExtResource("4_r2eu1")]
+tile_set = SubResource("TileSet_cph76")
+
+[node name="Decor" parent="." unique_id=1027154604 instance=ExtResource("5_uio3a")]
+tile_set = SubResource("TileSet_5i8r2")

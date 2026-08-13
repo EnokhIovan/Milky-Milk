@@ -7,15 +7,16 @@
 height = 32.0
 
 [node name="Portal" type="Area2D" unique_id=2060445049]
-position = Vector2(0, -16)
 script = ExtResource("2_yr5l2")
 
 [node name="Area2D" type="Sprite2D" parent="." unique_id=1397454988]
+position = Vector2(0, -16)
 texture = ExtResource("1_lboxv")
 region_enabled = true
 region_rect = Rect2(128, 0, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1223322301]
+position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_nsk4d")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dmwid4xoyvcat"]
+
+[ext_resource type="Texture2D" uid="uid://2s1oyvty2ax" path="res://Colorless_files/Art/Tiles/Decor.png" id="1_44qe1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsk4d"]
+size = Vector2(22, 42)
+
+[node name="Gate" type="Area2D" unique_id=1274218764]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=109476583]
+position = Vector2(0, -32)
+texture = ExtResource("1_44qe1")
+region_enabled = true
+region_rect = Rect2(96, 0, 32, 32)
+
+[node name="GateBottom" type="Sprite2D" parent="." unique_id=635149894]
+position = Vector2(0, -8)
+texture = ExtResource("1_44qe1")
+region_enabled = true
+region_rect = Rect2(96, 16, 32, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=790338168]
+position = Vector2(0, -21)
+shape = SubResource("RectangleShape2D_nsk4d")
