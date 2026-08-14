@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var allowed_colors: Array[int] = [0, 1, 2, 3]
 @export var tilemap_path: NodePath
 @export var spike_tilemap_path: NodePath
+@export var decor_tilemap_path: NodePath
 
 var is_painting := false
 var is_dead := false
@@ -20,8 +21,9 @@ var _was_on_floor := true
 
 @onready var sprite = $AnimatedSprite2D
 @onready var collision_shape = $CollisionShape2D
-@onready var tilemap: TileMapLayer = get_node(tilemap_path)
-@onready var spike_tilemap: TileMapLayer = get_node(spike_tilemap_path)
+@onready var tilemap: TileMapLayer = get_node_or_null(tilemap_path)
+@onready var spike_tilemap: TileMapLayer = get_node_or_null(spike_tilemap_path)
+@onready var decor_tilemap: TileMapLayer = get_node_or_null(decor_tilemap_path)
 
 func _ready():
 	MusicPlayer.play("main")
@@ -32,6 +34,7 @@ func _ready():
 	spawn_position = global_position
 	_was_on_floor = is_on_floor()
 	_validate_allowed_colors()
+	current_color = GameState.current_color
 
 func _validate_allowed_colors() -> void:
 	if allowed_colors.size() > 4:
@@ -63,6 +66,8 @@ func _physics_process(delta):
 		current_color = 2
 	if Input.is_action_just_pressed("color_4") and 3 in allowed_colors:
 		current_color = 3
+	
+	GameState.current_color = current_color
 
 	if Input.is_action_just_pressed("paint"):
 		shoot_paint(get_global_mouse_position())
@@ -106,6 +111,7 @@ func _physics_process(delta):
 		#die()
 
 	_check_landing()
+	check_portal()
 
 func _check_landing() -> void:
 	var on_floor_now := is_on_floor()
@@ -140,6 +146,22 @@ func _do_respawn() -> void:
 	sprite.play("Idle")
 	is_dead = false
 
+func check_portal():
+	if decor_tilemap == null:
+		return
+
+	var check_position := global_position + Vector2(0, 16)
+	var cell := decor_tilemap.local_to_map(decor_tilemap.to_local(check_position))
+	var tile_data := decor_tilemap.get_cell_tile_data(cell)
+
+	if tile_data == null:
+		return
+
+	var target_scene = tile_data.get_custom_data("portal")
+
+	if target_scene != "" and Input.is_action_just_pressed("interact"):
+		get_tree().change_scene_to_file(target_scene)
+
 func _on_animation_finished() -> void:
 	if sprite.animation == "Paint":
 		is_painting = false
@@ -148,9 +170,19 @@ func _on_animation_finished() -> void:
 func shoot_paint(target_pos: Vector2) -> void:
 	is_painting = true
 	sprite.play("Paint")
+
 	var to_target = target_pos - global_position
 	var distance = min(to_target.length(), shoot_range)
 	var direction = to_target.normalized()
 	var final_pos = global_position + direction * distance
 	var cell = tilemap.local_to_map(tilemap.to_local(final_pos))
+
 	PaintSystem.paint_one(tilemap, cell, current_color, color_lookup)
+
+	# Ambil ID dari root scene
+	var map = get_tree().current_scene
+	var level_id: String = map.level_id
+
+	# Simpan warna tile
+	var state = GameState.get_level_state(level_id)
+	state["tiles"][cell] = current_color

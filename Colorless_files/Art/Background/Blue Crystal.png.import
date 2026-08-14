@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckfk6i7ndv35o"
-path="res://.godot/imported/Tileset.png-626a73713cedbb22c8c44754ecc6a42c.ctex"
+uid="uid://bkgqi2bvkae5f"
+path="res://.godot/imported/Blue Crystal.png-585a70541d294936f2c97fb1e1856554.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Colorless_files/Art/Tiles/Tileset.png"
-dest_files=["res://.godot/imported/Tileset.png-626a73713cedbb22c8c44754ecc6a42c.ctex"]
+source_file="res://Colorless_files/Art/Background/Blue Crystal.png"
+dest_files=["res://.godot/imported/Blue Crystal.png-585a70541d294936f2c97fb1e1856554.ctex"]
 
 [params]
 
