@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://biepldxmqx1d1" path="res://Colorless_files/Art/Movement/Walk/6.png" id="23_btcdg"]
 [ext_resource type="Texture2D" uid="uid://7xhvlnwpdmmw" path="res://Colorless_files/Art/Movement/Walk/7.png" id="24_m82uv"]
 [ext_resource type="Texture2D" uid="uid://d2jl3nmsuc73f" path="res://Colorless_files/Art/Movement/Walk/8.png" id="25_tlvi4"]
+[ext_resource type="Texture2D" uid="uid://c4ir28uygehoy" path="res://Colorless_files/Art/GUI/Icon/Interact Button.png" id="26_ks05d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sinmp"]
 animations = [{
@@ -142,3 +143,9 @@ limit_left = -338
 limit_top = -164
 limit_right = 335
 limit_bottom = 164
+
+[node name="InteractionPrompt" type="Sprite2D" parent="." unique_id=405022382]
+visible = false
+position = Vector2(0, -39)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("26_ks05d")
