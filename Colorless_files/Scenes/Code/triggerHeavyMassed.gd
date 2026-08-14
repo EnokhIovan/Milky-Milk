@@ -80,7 +80,7 @@ func process_single_piece(layer: TileMapLayer, cell: Vector2i, texture: Texture2
 		dust.burst()
 
 	var sprite = Sprite2D.new()
-	sprite.set_script(preload("res://Colorless_files/Scenes/Code/groundPiece.gd"))
+	sprite.set_script(preload("res://Colorless_files/Scenes/Code/GroundPiece.gd"))
 	sprite.texture = texture
 	sprite.region_enabled = true
 	sprite.region_rect = Rect2(atlas_coords * tile_size, tile_size)

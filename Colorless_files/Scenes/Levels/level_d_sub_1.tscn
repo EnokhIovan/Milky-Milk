@@ -78,7 +78,7 @@ sources/0 = SubResource("TileSetAtlasSource_26k0e")
 
 [node name="level_d_sub_1" type="Node2D" unique_id=1348431907]
 script = ExtResource("1_w1i6y")
-level_id = "L4S1"
+level_id = "LDS1"
 
 [node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("1_4i6kx")]
 
@@ -89,18 +89,18 @@ tile_map_data = PackedByteArray("AAD7/wAAAAAHAAMAAAD6/wAAAAAHAAMAAAD8/wAAAAAIAAM
 
 [node name="portal" parent="PortalNode" unique_id=2060445049 instance=ExtResource("7_hoeqc")]
 position = Vector2(-81, 0)
-portal_id = "portal1S1"
-target_scene = "uid://bpoic5elx0rns"
-target_portal_id = "portal1LD"
+id = "LDS1P1"
+destination_scene = "uid://bpoic5elx0rns"
+destination_id = "LDP1"
 
 [node name="portal2" parent="PortalNode" unique_id=55867837 instance=ExtResource("7_hoeqc")]
 position = Vector2(80, 0)
-portal_id = "portal2S1"
-target_scene = "uid://bpoic5elx0rns"
-target_portal_id = "portal2LD"
+id = "LDS1P2"
+destination_scene = "uid://bpoic5elx0rns"
+destination_id = "LDP2"
 
 [node name="Player" parent="." unique_id=1002194499 instance=ExtResource("2_uio3a")]
-position = Vector2(-81, 0)
+position = Vector2(-99, 0)
 tilemap_path = NodePath("../Ground")
 spike_tilemap_path = NodePath("../Spike")
 

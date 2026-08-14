@@ -277,7 +277,7 @@ custom_data_layer_2/name = ""
 custom_data_layer_2/type = 0
 sources/0 = SubResource("TileSetAtlasSource_55xad")
 
-[node name="Level" type="Node2D" unique_id=400646959]
+[node name="Level1" type="Node2D" unique_id=400646959]
 script = ExtResource("1_55xad")
 level_id = "L1"
 
@@ -289,6 +289,7 @@ tile_set = SubResource("TileSet_yfeoe")
 
 [node name="Gate" parent="." unique_id=1274218764 instance=ExtResource("9_yfeoe")]
 position = Vector2(208, -48)
+id = "L1Gex"
 
 [node name="Player" parent="." unique_id=1002194499 instance=ExtResource("1_whxol")]
 position = Vector2(-296, 144)

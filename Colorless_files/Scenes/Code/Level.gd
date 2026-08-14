@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var level_id: String = "L14S1"
+@export var level_id: String = ""
 @onready var tilemap: TileMapLayer = $Ground
 var color_lookup: Dictionary
 

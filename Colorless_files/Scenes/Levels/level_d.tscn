@@ -280,7 +280,7 @@ sources/0 = SubResource("TileSetAtlasSource_tmqc5")
 
 [node name="level_d" type="Node2D" unique_id=1910671739]
 script = ExtResource("1_c6udl")
-level_id = "L4"
+level_id = "LD"
 
 [node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("1_30nc2")]
 
@@ -288,25 +288,32 @@ level_id = "L4"
 tile_map_data = PackedByteArray("AADs/wkAAAAHAAMAAADr/wkAAAAGAAMAAADt/wkAAAAHAAMAAADu/wkAAAAHAAMAAADv/wkAAAACAAMAAADx/wUAAAADAAMAAADz/wEAAAADAAMAAAD1//3/AAADAAMAAAD8//3/AAAAAAMAAAAAAP3/AAABAAMAAAD9//3/AAABAAMAAAD+//3/AAAHAAMAAAD///3/AAAHAAMAAAALAP3/AAAAAAMAAAAMAP3/AAABAAMAAAANAP3/AAABAAMAAAAOAP3/AAABAAMAAAAPAP3/AAAHAAMAAAAQAP3/AAAIAAMAAAABAP3/AAACAAMAAAA=")
 tile_set = SubResource("TileSet_j0js7")
 
-[node name="Gate" parent="." unique_id=1274218764 instance=ExtResource("5_tmqc5")]
+[node name="GateNode" type="Node2D" parent="." unique_id=314915524]
+
+[node name="GateEn" parent="GateNode" unique_id=1311234032 instance=ExtResource("5_tmqc5")]
+position = Vector2(-293, 144)
+id = "LDGen"
+
+[node name="GateEx" parent="GateNode" unique_id=1274218764 instance=ExtResource("5_tmqc5")]
 position = Vector2(192, -48)
+id = "LDGex"
 
 [node name="PortalNode" type="Node2D" parent="." unique_id=1964106556]
 
 [node name="toSub1" parent="PortalNode" unique_id=504761103 instance=ExtResource("7_hxpfd")]
 position = Vector2(-16, -48)
-portal_id = "portal1LD"
-target_scene = "uid://dx4dw8sv8e0p2"
-target_portal_id = "portal1S1"
+id = "LDP1"
+destination_scene = "uid://dx4dw8sv8e0p2"
+destination_id = "LDS1P1"
 
 [node name="fromSub1" parent="PortalNode" unique_id=472833840 instance=ExtResource("7_hxpfd")]
 position = Vector2(256, -48)
-portal_id = "portal2LD"
-target_scene = "uid://dx4dw8sv8e0p2"
-target_portal_id = "portal2S1"
+id = "LDP2"
+destination_scene = "uid://dx4dw8sv8e0p2"
+destination_id = "LDS1P2"
 
 [node name="Player" parent="." unique_id=1002194499 instance=ExtResource("3_rfjr6")]
-position = Vector2(-318, 144)
+position = Vector2(-316, 144)
 tilemap_path = NodePath("../Ground")
 spike_tilemap_path = NodePath("../Spike")
 
