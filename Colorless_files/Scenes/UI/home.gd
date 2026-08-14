@@ -1,10 +1,9 @@
 extends Control
 
 @onready var fade_overlay: ColorRect = $FadeOverlay
-@onready var start_btn: TextureButton = $Start
-@onready var option_btn: TextureButton = $Option
-@onready var exit_btn: TextureButton = $Exit
-
+@onready var start_btn: TextureButton = $MenuGroup/Start
+@onready var option_btn: TextureButton = $MenuGroup/Option
+@onready var exit_btn: TextureButton = $MenuGroup/Exit
 var _original_positions := {}
 
 func _ready() -> void:
