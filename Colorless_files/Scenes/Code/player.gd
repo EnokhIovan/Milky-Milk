@@ -21,6 +21,7 @@ var _was_on_floor := true
 
 @onready var sprite = $AnimatedSprite2D
 @onready var collision_shape = $CollisionShape2D
+@onready var interaction_prompt: Sprite2D = $InteractionPrompt
 @onready var tilemap: TileMapLayer = get_node_or_null(tilemap_path)
 @onready var spike_tilemap: TileMapLayer = get_node_or_null(spike_tilemap_path)
 @onready var decor_tilemap: TileMapLayer = get_node_or_null(decor_tilemap_path)
