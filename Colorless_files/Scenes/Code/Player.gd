@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var bounce_height := 64.0
 @export var fall_limit_y := 672.0
 @export var allowed_colors: Array[int] = [0, 1, 2, 3]
+@export var teleport_pre_delay := 0.2
+@export var teleport_post_delay := 0.2
 @export var tilemap_path: NodePath
 @export var spike_tilemap_path: NodePath
 @export var decor_tilemap_path: NodePath
@@ -18,6 +20,9 @@ var current_color := 0
 var spawn_position: Vector2
 var color_lookup: Dictionary = {}
 var _was_on_floor := true
+var is_teleporting := false
+var _on_teleport_tile := false
+var _current_teleport_cell: Vector2i = Vector2i(-999999, -999999)
 
 @onready var sprite = $AnimatedSprite2D
 @onready var collision_shape = $CollisionShape2D
@@ -44,8 +49,27 @@ func _validate_allowed_colors() -> void:
 		if c < 0 or c > 3:
 			push_warning("allowed_colors berisi nilai gak valid: %s (harus 0-3)" % c)
 
+# --- Helper state ---
+func _get_level_state() -> Dictionary:
+	var map = get_tree().current_scene
+	var level_id: String = map.level_id
+	return GameState.get_level_state(level_id)
+
+func _purple_paint_count() -> int:
+	var tiles: Dictionary = _get_level_state().get("tiles", {})
+	var count := 0
+	for c in tiles.values():
+		if c == 3:
+			count += 1
+	return count
+
 func _physics_process(delta):
 	if is_dead:
+		return
+
+	if is_teleporting:
+		velocity = Vector2.ZERO
+		move_and_slide()
 		return
 
 	if global_position.y > fall_limit_y:
@@ -66,7 +90,13 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("color_3") and 2 in allowed_colors:
 		current_color = 2
 	if Input.is_action_just_pressed("color_4") and 3 in allowed_colors:
-		current_color = 3
+		# ungu cuma boleh 1 pasang (2 tile), dan begitu pasangan itu udah
+		# pernah dipake teleport 1x, ungu terkunci sampe pindah level (level_id beda)
+		var state := _get_level_state()
+		if state.get("teleport_used", false) or _purple_paint_count() >= 2:
+			current_color = 0
+		else:
+			current_color = 3
 	
 	GameState.current_color = current_color
 
@@ -108,7 +138,12 @@ func _physics_process(delta):
 			Audio.play("bounce")
 		velocity.y = new_vel_y
 
+	#if HazardSystem.check_spike(spike_tilemap, rect):
+		#die()
+
 	_check_landing()
+	check_portal()
+	check_teleport()
 
 func _check_landing() -> void:
 	var on_floor_now := is_on_floor()
@@ -143,6 +178,22 @@ func _do_respawn() -> void:
 	sprite.play("Idle")
 	is_dead = false
 
+func check_portal():
+	if decor_tilemap == null:
+		return
+
+	var check_position := global_position + Vector2(0, 16)
+	var cell := decor_tilemap.local_to_map(decor_tilemap.to_local(check_position))
+	var tile_data := decor_tilemap.get_cell_tile_data(cell)
+
+	if tile_data == null:
+		return
+
+	var target_scene = tile_data.get_custom_data("portal")
+
+	if target_scene != "" and Input.is_action_just_pressed("interact"):
+		get_tree().change_scene_to_file(target_scene)
+
 func _on_animation_finished() -> void:
 	if sprite.animation == "Paint":
 		is_painting = false
@@ -158,12 +209,92 @@ func shoot_paint(target_pos: Vector2) -> void:
 	var final_pos = global_position + direction * distance
 	var cell = tilemap.local_to_map(tilemap.to_local(final_pos))
 
+	var state = _get_level_state()
+	var tiles: Dictionary = state["tiles"]
+
+	if current_color == 3 and (state.get("teleport_used", false) or not _can_paint_purple(tiles, cell)):
+		# udah kepake teleport-nya, atau udah ada 1 pasang aktif -> ungu terkunci
+		return
+
 	PaintSystem.paint_one(tilemap, cell, current_color, color_lookup)
 
-	# Ambil ID dari root scene
-	var map = get_tree().current_scene
-	var level_id: String = map.level_id
-
 	# Simpan warna tile
-	var state = GameState.get_level_state(level_id)
-	state["tiles"][cell] = current_color
+	tiles[cell] = current_color
+
+# Ungu (color id 3) cuma boleh ada 1 pasang (maksimal 2 tile) sekaligus per level.
+func _can_paint_purple(tiles: Dictionary, cell: Vector2i) -> bool:
+	# cat ulang tile yang emang udah ungu selalu boleh
+	if tiles.get(cell, -1) == 3:
+		return true
+	return _purple_paint_count() < 2
+
+# --- TELEPORT (warna ungu / color id 3) ---
+# Dua tile yang dicat ungu otomatis jadi pasangan teleport permanen --
+# tile-nya TETAP ungu selamanya, gak balik putih. Deteksi pakai collision
+# fisik (sama kayak cek spike), jadi tile ungu harus punya collision solid
+# (biasanya tile di "Ground").
+# Edge-triggered: nginjek tile ungu -> teleport sekali. Selama masih nempel
+# di tile itu gak nge-trigger ulang. Turun lalu injak lagi (tile ungu
+# manapun) -> teleport lagi. Jadi bisa dipakai bolak-balik berkali-kali,
+# tapi tetap cuma ada 1 pasang ungu itu doang di seluruh level (dibatasi
+# lewat _purple_paint_count() pas milih warna / ngecat).
+func check_teleport() -> void:
+	if tilemap == null or is_teleporting:
+		return
+
+	var state = _get_level_state()
+	var tiles: Dictionary = state.get("tiles", {})
+
+	var hit_cell = null
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_collider() == tilemap:
+			var cell: Vector2i = tilemap.local_to_map(tilemap.to_local(collision.get_position()))
+			if tiles.get(cell, -1) == 3:
+				hit_cell = cell
+				break
+
+	if hit_cell == null:
+		# gak lagi nempel tile ungu, arm ulang buat trigger berikutnya
+		_on_teleport_tile = false
+		return
+
+	if _on_teleport_tile and hit_cell == _current_teleport_cell:
+		# masih di tile yang sama kayak hasil teleport terakhir, jangan re-trigger
+		return
+
+	# cari tile ungu lain sebagai pasangannya
+	var target_cell = null
+	for painted_cell in tiles.keys():
+		if painted_cell != hit_cell and tiles[painted_cell] == 3:
+			target_cell = painted_cell
+			break
+
+	if target_cell == null:
+		_on_teleport_tile = false
+		return
+
+	# tandain "udah pernah dipake" -- ini yang ngunci ungu buat DICAT lagi
+	# (lihat guard di color_4 & shoot_paint). Teleport lewat pasangan yang
+	# udah ada tetap jalan normal (bolak-balik), cuma gak bisa bikin pasangan baru.
+	state["teleport_used"] = true
+
+	_on_teleport_tile = true
+	_current_teleport_cell = target_cell
+	_start_teleport(target_cell)
+
+func _start_teleport(cell: Vector2i) -> void:
+	is_teleporting = true
+	velocity = Vector2.ZERO
+
+	await get_tree().create_timer(teleport_pre_delay).timeout
+	teleport_to(cell)
+	await get_tree().create_timer(teleport_post_delay).timeout
+
+	is_teleporting = false
+
+func teleport_to(cell: Vector2i) -> void:
+	var target_pos: Vector2 = tilemap.to_global(tilemap.map_to_local(cell))
+	global_position = target_pos + Vector2(0, -8)
+	velocity = Vector2.ZERO
+	Audio.play("teleport")
