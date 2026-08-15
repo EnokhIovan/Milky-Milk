@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://b1lvbpaqccf2h"]
+
+[ext_resource type="Script" uid="uid://hpvr5nnitd41" path="res://Colorless_files/Scenes/Code/InteractiveSystem/Item.gd" id="1_cciki"]
+[ext_resource type="Texture2D" uid="uid://bkgqi2bvkae5f" path="res://Colorless_files/Art/Items/Blue Crystal.png" id="2_6eas7"]
+[ext_resource type="Texture2D" uid="uid://bn7cxr1v0t7rx" path="res://Colorless_files/Art/Items/Green Crystal.png" id="3_y6tc8"]
+[ext_resource type="Texture2D" uid="uid://bv7mfd2qg0ylg" path="res://Colorless_files/Art/Items/Purple Crystal.png" id="4_cwfvg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kv21n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6eas7")
+}],
+"loop": 1,
+"name": &"BlueShard",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_y6tc8")
+}],
+"loop": 1,
+"name": &"GreenShard",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cwfvg")
+}],
+"loop": 1,
+"name": &"PurpleShard",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kv21n"]
+radius = 15.0
+
+[node name="Shard" type="Area2D" unique_id=1388214261 groups=["interactable"]]
+script = ExtResource("1_cciki")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=909207172]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_kv21n")
+animation = &"PurpleShard"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1841250815]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_kv21n")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

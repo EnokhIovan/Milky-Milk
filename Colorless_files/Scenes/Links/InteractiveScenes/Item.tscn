@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://b1lvbpaqccf2h"]
-
-[ext_resource type="Script" uid="uid://hpvr5nnitd41" path="res://Colorless_files/Scenes/Code/InteractiveSystem/Item.gd" id="1_cciki"]
-
-[node name="Item" type="Area2D" unique_id=1388214261]
-script = ExtResource("1_cciki")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=909207172]

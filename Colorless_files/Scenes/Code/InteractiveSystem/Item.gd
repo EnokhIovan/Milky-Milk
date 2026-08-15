@@ -1,23 +1,25 @@
 extends Area2D
 
-@export var item_id: String
+var player_inside: Node = null
 
 
-func _ready():
-	var map = get_tree().current_scene
-	var level_id: String = map.level_id
+func _physics_process(_delta: float) -> void:
+	var bodies := get_overlapping_bodies()
 
-	var state = GameState.get_level_state(level_id)
+	player_inside = null
 
-	if state["items"].get(item_id, false):
-		queue_free()
+	for body in bodies:
+		if body.is_in_group("player"):
+			player_inside = body
+			break
 
-func collect():
-	var map = get_tree().current_scene
-	var level_id: String = map.level_id
+	# Update prompt
+	if player_inside:
+		player_inside.interaction_prompt.visible = true
 
-	var state = GameState.get_level_state(level_id)
-
-	state["items"][item_id] = true
-
-	queue_free()
+		if Input.is_action_just_pressed("interact"):
+			player_inside.interaction_prompt.visible = false
+			queue_free()
+	else:
+		for body in get_tree().get_nodes_in_group("player"):
+			body.interaction_prompt.visible = false

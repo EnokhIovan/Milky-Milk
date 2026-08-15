@@ -108,11 +108,7 @@ func _physics_process(delta):
 			Audio.play("bounce")
 		velocity.y = new_vel_y
 
-	#if HazardSystem.check_spike(spike_tilemap, rect):
-		#die()
-
 	_check_landing()
-	check_portal()
 
 func _check_landing() -> void:
 	var on_floor_now := is_on_floor()
@@ -146,22 +142,6 @@ func _do_respawn() -> void:
 	sprite.modulate.a = 1.0
 	sprite.play("Idle")
 	is_dead = false
-
-func check_portal():
-	if decor_tilemap == null:
-		return
-
-	var check_position := global_position + Vector2(0, 16)
-	var cell := decor_tilemap.local_to_map(decor_tilemap.to_local(check_position))
-	var tile_data := decor_tilemap.get_cell_tile_data(cell)
-
-	if tile_data == null:
-		return
-
-	var target_scene = tile_data.get_custom_data("portal")
-
-	if target_scene != "" and Input.is_action_just_pressed("interact"):
-		get_tree().change_scene_to_file(target_scene)
 
 func _on_animation_finished() -> void:
 	if sprite.animation == "Paint":

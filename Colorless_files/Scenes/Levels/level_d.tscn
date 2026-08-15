@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cf8qqih2uur4l" path="res://Colorless_files/Scenes/Links/InteractiveScenes/TriggerCam.tscn" id="5_a3vfp"]
 [ext_resource type="PackedScene" uid="uid://dmwid4xoyvcat" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Gate.tscn" id="5_tmqc5"]
 [ext_resource type="PackedScene" uid="uid://bh3evbret5cl6" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Portal.tscn" id="7_hxpfd"]
+[ext_resource type="PackedScene" uid="uid://b1lvbpaqccf2h" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Shard.tscn" id="7_j0js7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tmqc5"]
 texture = ExtResource("4_gwywq")
@@ -311,6 +312,9 @@ position = Vector2(256, -48)
 id = "LDP2"
 destination_scene = "uid://dx4dw8sv8e0p2"
 destination_id = "LDS1P2"
+
+[node name="Shard" parent="." unique_id=1388214261 instance=ExtResource("7_j0js7")]
+position = Vector2(-263, 142)
 
 [node name="Player" parent="." unique_id=1002194499 instance=ExtResource("3_rfjr6")]
 position = Vector2(-316, 144)
