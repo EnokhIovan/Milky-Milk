@@ -21,13 +21,19 @@ func _on_body_exited(body: Node2D) -> void:
 		player_inside = false
 		body.interaction_prompt.visible = false
 
+func complete_level_if_exit():
+	if id.ends_with("Gex"):
+		var level_id := id.trim_prefix("L").trim_suffix("Gex")
+		SaveManager.complete_level("level_" + level_id)
 
 func _process(_delta: float) -> void:
 	if player_inside and destination_scene != "" and destination_id != "":
 		if player_inside and Input.is_action_just_pressed("interact"):
 			if destination_scene == "" or destination_id == "":
 				return
-
+			
+			complete_level_if_exit()
+			
 			SceneTransition.change_scene(
 				destination_scene,
 				destination_id
