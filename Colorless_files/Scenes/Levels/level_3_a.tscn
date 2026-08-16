@@ -89,15 +89,15 @@ tile_map_data = PackedByteArray("AAD7/wAAAAAHAAMAAAD6/wAAAAAHAAMAAAD8/wAAAAAIAAM
 
 [node name="portal" parent="PortalNode" unique_id=2060445049 instance=ExtResource("7_hoeqc")]
 position = Vector2(-81, 0)
-id = "LDS1P1"
+id = "L3S1P1"
 destination_scene = "uid://bpoic5elx0rns"
-destination_id = "LDP1"
+destination_id = "L3P1"
 
 [node name="portal2" parent="PortalNode" unique_id=55867837 instance=ExtResource("7_hoeqc")]
 position = Vector2(80, 0)
-id = "LDS1P2"
+id = "L3S1P2"
 destination_scene = "uid://bpoic5elx0rns"
-destination_id = "LDP2"
+destination_id = "L3P2"
 
 [node name="Player" parent="." unique_id=1002194499 instance=ExtResource("2_uio3a")]
 position = Vector2(-99, 0)
