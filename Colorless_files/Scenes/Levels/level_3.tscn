@@ -335,7 +335,8 @@ tile_map_data = PackedByteArray("AADr//j/AAABAAAAAADs//j/AAABAAAAAADt//j/AAABAAA
 position = Vector2(-233, 70)
 
 [node name="Trigger Cam" parent="TrigCamNode" unique_id=1501787538 instance=ExtResource("11_rmxbj")]
-position = Vector2(370, -18)
+position = Vector2(372, -17)
+scale = Vector2(0.92, 1)
 
 [node name="Trigger Cam2" parent="TrigCamNode" unique_id=1481347858 instance=ExtResource("11_rmxbj")]
 position = Vector2(-6, -194)
