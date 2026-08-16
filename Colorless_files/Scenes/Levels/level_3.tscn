@@ -1,19 +1,19 @@
 [gd_scene format=4 uid="uid://bpoic5elx0rns"]
 
-[ext_resource type="PackedScene" uid="uid://wgfa6o4pfrcc" path="res://Colorless_files/Scenes/Links/Background.tscn" id="1_30nc2"]
-[ext_resource type="Script" uid="uid://cvjeq3xoyyp3w" path="res://Colorless_files/Scenes/Code/Level.gd" id="1_c6udl"]
-[ext_resource type="PackedScene" uid="uid://cq5n3xypxjgqf" path="res://Colorless_files/Scenes/Links/Ground.tscn" id="2_rfjr6"]
-[ext_resource type="PackedScene" uid="uid://bf88xsae3bdmw" path="res://Colorless_files/Scenes/Links/Player.tscn" id="3_rfjr6"]
-[ext_resource type="Texture2D" uid="uid://ckfk6i7ndv35o" path="res://Colorless_files/Art/Tiles/Tileset.png" id="4_gwywq"]
-[ext_resource type="PackedScene" uid="uid://dk8vo1xp41vu6" path="res://Colorless_files/Scenes/Links/Spike.tscn" id="4_hehcp"]
-[ext_resource type="PackedScene" uid="uid://1gffkf0j38j4" path="res://Colorless_files/Scenes/Links/Decor.tscn" id="4_i66aa"]
-[ext_resource type="PackedScene" uid="uid://cf8qqih2uur4l" path="res://Colorless_files/Scenes/Links/InteractiveScenes/TriggerCam.tscn" id="5_a3vfp"]
-[ext_resource type="PackedScene" uid="uid://dmwid4xoyvcat" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Gate.tscn" id="5_tmqc5"]
-[ext_resource type="PackedScene" uid="uid://bh3evbret5cl6" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Portal.tscn" id="7_hxpfd"]
-[ext_resource type="PackedScene" uid="uid://b1lvbpaqccf2h" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Shard.tscn" id="7_j0js7"]
+[ext_resource type="Script" uid="uid://cvjeq3xoyyp3w" path="res://Colorless_files/Scenes/Code/Level.gd" id="1_gnji2"]
+[ext_resource type="PackedScene" uid="uid://wgfa6o4pfrcc" path="res://Colorless_files/Scenes/Links/Background.tscn" id="2_oapm2"]
+[ext_resource type="PackedScene" uid="uid://cq5n3xypxjgqf" path="res://Colorless_files/Scenes/Links/Ground.tscn" id="3_44b7b"]
+[ext_resource type="Texture2D" uid="uid://ckfk6i7ndv35o" path="res://Colorless_files/Art/Tiles/Tileset.png" id="4_3n48c"]
+[ext_resource type="PackedScene" uid="uid://dmwid4xoyvcat" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Gate.tscn" id="5_b0cq1"]
+[ext_resource type="PackedScene" uid="uid://bh3evbret5cl6" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Portal.tscn" id="6_si47i"]
+[ext_resource type="PackedScene" uid="uid://b1lvbpaqccf2h" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Shard.tscn" id="7_2u84s"]
+[ext_resource type="PackedScene" uid="uid://bf88xsae3bdmw" path="res://Colorless_files/Scenes/Links/Player.tscn" id="8_hip7u"]
+[ext_resource type="PackedScene" uid="uid://dk8vo1xp41vu6" path="res://Colorless_files/Scenes/Links/Spike.tscn" id="9_d3d5a"]
+[ext_resource type="PackedScene" uid="uid://1gffkf0j38j4" path="res://Colorless_files/Scenes/Links/Decor.tscn" id="10_v3jiq"]
+[ext_resource type="PackedScene" uid="uid://cf8qqih2uur4l" path="res://Colorless_files/Scenes/Links/InteractiveScenes/TriggerCam.tscn" id="11_rmxbj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tmqc5"]
-texture = ExtResource("4_gwywq")
+texture = ExtResource("4_3n48c")
 0:0/0 = 0
 1:0/0 = 0
 1:0/0/custom_data_1 = 1
@@ -280,57 +280,59 @@ custom_data_layer_2/type = 0
 sources/0 = SubResource("TileSetAtlasSource_tmqc5")
 
 [node name="level_d" type="Node2D" unique_id=1910671739]
-script = ExtResource("1_c6udl")
+script = ExtResource("1_gnji2")
 level_id = "LD"
 
-[node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("1_30nc2")]
+[node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("2_oapm2")]
 
-[node name="Ground" parent="." unique_id=1623240245 instance=ExtResource("2_rfjr6")]
+[node name="Ground" parent="." unique_id=1623240245 instance=ExtResource("3_44b7b")]
 tile_map_data = PackedByteArray("AADs/wkAAAAHAAMAAADr/wkAAAAGAAMAAADt/wkAAAAHAAMAAADu/wkAAAAHAAMAAADv/wkAAAACAAMAAADx/wUAAAADAAMAAADz/wEAAAADAAMAAAD1//3/AAADAAMAAAD8//3/AAAAAAMAAAAAAP3/AAABAAMAAAD9//3/AAABAAMAAAD+//3/AAAHAAMAAAD///3/AAAHAAMAAAALAP3/AAAAAAMAAAAMAP3/AAABAAMAAAANAP3/AAABAAMAAAAOAP3/AAABAAMAAAAPAP3/AAAHAAMAAAAQAP3/AAAIAAMAAAABAP3/AAACAAMAAAA=")
 tile_set = SubResource("TileSet_j0js7")
 
 [node name="GateNode" type="Node2D" parent="." unique_id=314915524]
 
-[node name="GateEn" parent="GateNode" unique_id=1311234032 instance=ExtResource("5_tmqc5")]
+[node name="GateEn" parent="GateNode" unique_id=1311234032 instance=ExtResource("5_b0cq1")]
 position = Vector2(-293, 144)
-id = "LDGen"
+id = "L3Gen"
 
-[node name="GateEx" parent="GateNode" unique_id=1274218764 instance=ExtResource("5_tmqc5")]
+[node name="GateEx" parent="GateNode" unique_id=1274218764 instance=ExtResource("5_b0cq1")]
 position = Vector2(192, -48)
-id = "LDGex"
+id = "L3Gex"
+destination_scene = "uid://d2f0l7jcdm3kh"
+destination_id = "L4Gen"
 
 [node name="PortalNode" type="Node2D" parent="." unique_id=1964106556]
 
-[node name="toSub1" parent="PortalNode" unique_id=504761103 instance=ExtResource("7_hxpfd")]
+[node name="toSub1" parent="PortalNode" unique_id=504761103 instance=ExtResource("6_si47i")]
 position = Vector2(-16, -48)
-id = "LDP1"
+id = "L3P1"
 destination_scene = "uid://dx4dw8sv8e0p2"
-destination_id = "LDS1P1"
+destination_id = "L3S1P1"
 
-[node name="fromSub1" parent="PortalNode" unique_id=472833840 instance=ExtResource("7_hxpfd")]
+[node name="fromSub1" parent="PortalNode" unique_id=472833840 instance=ExtResource("6_si47i")]
 position = Vector2(256, -48)
-id = "LDP2"
+id = "L3P2"
 destination_scene = "uid://dx4dw8sv8e0p2"
-destination_id = "LDS1P2"
+destination_id = "L3S1P2"
 
-[node name="Shard" parent="." unique_id=1388214261 instance=ExtResource("7_j0js7")]
+[node name="Shard" parent="." unique_id=1388214261 instance=ExtResource("7_2u84s")]
 position = Vector2(-263, 142)
 
-[node name="Player" parent="." unique_id=1002194499 instance=ExtResource("3_rfjr6")]
+[node name="Player" parent="." unique_id=1002194499 instance=ExtResource("8_hip7u")]
 position = Vector2(-316, 144)
 tilemap_path = NodePath("../Ground")
 spike_tilemap_path = NodePath("../Spike")
 
-[node name="Spike" parent="." unique_id=375803085 instance=ExtResource("4_hehcp")]
+[node name="Spike" parent="." unique_id=375803085 instance=ExtResource("9_d3d5a")]
 
-[node name="Decor" parent="." unique_id=1027154604 instance=ExtResource("4_i66aa")]
+[node name="Decor" parent="." unique_id=1027154604 instance=ExtResource("10_v3jiq")]
 
 [node name="TrigCamNode" type="Node2D" parent="." unique_id=793159922]
 position = Vector2(-233, 70)
 
-[node name="Trigger Cam" parent="TrigCamNode" unique_id=1501787538 instance=ExtResource("5_a3vfp")]
+[node name="Trigger Cam" parent="TrigCamNode" unique_id=1501787538 instance=ExtResource("11_rmxbj")]
 position = Vector2(-85, 64)
 
-[node name="Trigger Cam2" parent="TrigCamNode" unique_id=1481347858 instance=ExtResource("5_a3vfp")]
+[node name="Trigger Cam2" parent="TrigCamNode" unique_id=1481347858 instance=ExtResource("11_rmxbj")]
 position = Vector2(0, 0)
 target_zoom = 2.0

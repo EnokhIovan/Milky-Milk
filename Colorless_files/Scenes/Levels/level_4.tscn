@@ -1,57 +1,64 @@
 [gd_scene format=4 uid="uid://d2f0l7jcdm3kh"]
 
-[ext_resource type="Script" uid="uid://cvjeq3xoyyp3w" path="res://Colorless_files/Scenes/Code/Level.gd" id="1_0mgdo"]
-[ext_resource type="PackedScene" uid="uid://wgfa6o4pfrcc" path="res://Colorless_files/Scenes/Links/Background.tscn" id="1_7bunc"]
-[ext_resource type="PackedScene" uid="uid://cq5n3xypxjgqf" path="res://Colorless_files/Scenes/Links/Ground.tscn" id="2_l4dup"]
-[ext_resource type="PackedScene" uid="uid://bf88xsae3bdmw" path="res://Colorless_files/Scenes/Links/Player.tscn" id="3_sknj1"]
-[ext_resource type="PackedScene" uid="uid://dk8vo1xp41vu6" path="res://Colorless_files/Scenes/Links/Spike.tscn" id="4_l4dup"]
-[ext_resource type="PackedScene" uid="uid://cf8qqih2uur4l" path="res://Colorless_files/Scenes/Links/InteractiveScenes/TriggerCam.tscn" id="5_sknj1"]
-[ext_resource type="PackedScene" uid="uid://1gffkf0j38j4" path="res://Colorless_files/Scenes/Links/Decor.tscn" id="5_yw4y8"]
-[ext_resource type="PackedScene" uid="uid://dmwid4xoyvcat" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Gate.tscn" id="7_ujs55"]
+[ext_resource type="Script" uid="uid://cvjeq3xoyyp3w" path="res://Colorless_files/Scenes/Code/Level.gd" id="1_so01e"]
+[ext_resource type="PackedScene" uid="uid://wgfa6o4pfrcc" path="res://Colorless_files/Scenes/Links/Background.tscn" id="2_euapt"]
+[ext_resource type="PackedScene" uid="uid://cq5n3xypxjgqf" path="res://Colorless_files/Scenes/Links/Ground.tscn" id="3_nn3df"]
+[ext_resource type="PackedScene" uid="uid://dmwid4xoyvcat" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Gate.tscn" id="4_jivdp"]
+[ext_resource type="PackedScene" uid="uid://bf88xsae3bdmw" path="res://Colorless_files/Scenes/Links/Player.tscn" id="5_bv2w0"]
+[ext_resource type="PackedScene" uid="uid://dk8vo1xp41vu6" path="res://Colorless_files/Scenes/Links/Spike.tscn" id="6_p63oh"]
+[ext_resource type="PackedScene" uid="uid://1gffkf0j38j4" path="res://Colorless_files/Scenes/Links/Decor.tscn" id="7_0whu7"]
+[ext_resource type="PackedScene" uid="uid://cf8qqih2uur4l" path="res://Colorless_files/Scenes/Links/InteractiveScenes/TriggerCam.tscn" id="8_45u3a"]
 
 [node name="LevelA" type="Node2D" unique_id=230637795]
-script = ExtResource("1_0mgdo")
+script = ExtResource("1_so01e")
 level_id = "LA"
 
-[node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("1_7bunc")]
+[node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("2_euapt")]
 
-[node name="Ground" parent="." unique_id=1623240245 instance=ExtResource("2_l4dup")]
+[node name="Ground" parent="." unique_id=1623240245 instance=ExtResource("3_nn3df")]
 tile_map_data = PackedByteArray("AADr/wkAAAABAAAAAADs/wkAAAABAAAAAADt/wkAAAABAAAAAADu/wkAAAABAAAAAADs/wcAAAAGAAMAAADt/wcAAAAHAAMAAADu/wcAAAAIAAMAAADw/wMAAAAAAAEAAADw/wQAAAAAAAEAAADw/wUAAAAAAAEAAADw/wYAAAAAAAEAAADw/wcAAAAAAAEAAADw/wgAAAAAAAEAAADw/wkAAAAFAAEAAADv/wkAAAABAAAAAADx/wMAAAACAAEAAADx/wQAAAACAAEAAADx/wUAAAACAAEAAADx/wYAAAACAAEAAADx/wcAAAACAAEAAADx/wgAAAACAAEAAADw/wIAAAAAAAAAAADx/wIAAAACAAAAAADx/wkAAAAEAAEAAADy/wkAAAABAAAAAADz/wkAAAABAAAAAAD0/wkAAAABAAAAAAD1/wkAAAABAAAAAAD2/wkAAAABAAAAAAD3/wkAAAABAAAAAAD4/wkAAAABAAAAAAD5/wkAAAABAAAAAAD6/wkAAAABAAAAAAD7/wkAAAABAAAAAADz////AAAAAAMAAAD0////AAABAAMAAADz/wcAAAADAAMAAAD1/wcAAAADAAMAAAD3/wcAAAADAAMAAAD5/wcAAAADAAMAAAD7/wcAAAADAAMAAAD9/wcAAAADAAMAAAD//wcAAAADAAMAAAABAAcAAAADAAMAAAD8/wkAAAABAAAAAAD9/wkAAAABAAAAAAD+/wkAAAABAAAAAAD//wkAAAABAAAAAAAAAAkAAAABAAAAAAABAAkAAAABAAAAAAACAAkAAAABAAAAAAD1/wIAAAADAAIAAAD5/wIAAAADAAIAAAD9/wIAAAADAAIAAAABAAIAAAADAAIAAAD1/wEAAAADAAEAAAD5/wEAAAADAAEAAAD9/wEAAAADAAEAAAABAAEAAAADAAEAAAD1/wAAAAADAAAAAAD5/wAAAAADAAAAAAD9/wAAAAADAAAAAAABAAAAAAADAAAAAAD1////AAACAAMAAAD1//7/AAAAAAMAAAD3//7/AAABAAMAAAD2//7/AAABAAMAAAD4//7/AAACAAMAAAADAAkAAAAFAAEAAAADAAgAAAAAAAEAAAADAAcAAAAAAAEAAAADAAYAAAAAAAEAAAADAAUAAAAAAAAAAAAEAAUAAAACAAAAAAAEAAYAAAACAAEAAAAEAAcAAAACAAEAAAAEAAgAAAACAAEAAAAFAAIAAAABAAMAAAAGAAIAAAACAAMAAAADAAIAAAAAAAMAAAAEAAIAAAABAAMAAAAFAAUAAAAAAAMAAAAGAAUAAAABAAMAAAAHAAUAAAABAAMAAAAIAAUAAAACAAMAAAAJAAMAAAADAAMAAAAKAP//AAAAAAAAAAAKAAAAAAAAAAEAAAAKAAEAAAAAAAEAAAAKAAIAAAAAAAEAAAAKAAMAAAAAAAEAAAAKAAQAAAAAAAEAAAAKAAUAAAAAAAEAAAAKAAYAAAAAAAEAAAAKAAcAAAAAAAEAAAAKAAgAAAAAAAEAAAAKAAkAAAAAAAEAAAALAP//AAABAAAAAAAMAP//AAABAAAAAAANAP//AAABAAAAAAAOAP//AAABAAAAAAAOAAAAAAABAAEAAAAOAAEAAAABAAEAAAAOAAIAAAABAAEAAAAOAAMAAAABAAEAAAAOAAQAAAABAAEAAAAOAAUAAAABAAEAAAAOAAYAAAABAAEAAAAOAAcAAAABAAEAAAAOAAgAAAABAAEAAAAOAAkAAAABAAEAAAALAAMAAAABAAEAAAALAAIAAAABAAEAAAALAAEAAAABAAEAAAALAAAAAAABAAEAAAAMAAAAAAABAAEAAAAMAAEAAAABAAEAAAAMAAIAAAABAAEAAAAMAAMAAAABAAEAAAAMAAQAAAABAAEAAAALAAQAAAABAAEAAAALAAUAAAABAAEAAAALAAYAAAABAAEAAAALAAcAAAABAAEAAAALAAgAAAABAAEAAAALAAkAAAABAAEAAAAMAAkAAAABAAEAAAAMAAgAAAABAAEAAAAMAAcAAAABAAEAAAAMAAYAAAABAAEAAAAMAAUAAAABAAEAAAANAAUAAAABAAEAAAANAAQAAAABAAEAAAANAAMAAAABAAEAAAANAAIAAAABAAEAAAANAAEAAAABAAEAAAANAAAAAAABAAEAAAANAAYAAAABAAEAAAANAAcAAAABAAEAAAANAAgAAAABAAEAAAANAAkAAAABAAEAAAAPAP//AAACAAAAAAAPAAAAAAACAAEAAAAPAAEAAAACAAEAAAAPAAIAAAACAAEAAAAPAAMAAAACAAEAAAAPAAQAAAACAAEAAAAPAAUAAAACAAEAAAAPAAYAAAACAAEAAAAPAAcAAAACAAEAAAAPAAgAAAACAAEAAAAPAAkAAAACAAEAAAA=")
 
-[node name="GateNode" type="Node2D" parent="." unique_id=1029538139]
+[node name="GateNode" type="Node2D" parent="." unique_id=690251357]
 
-[node name="Gate" parent="GateNode" unique_id=1274218764 instance=ExtResource("7_ujs55")]
-position = Vector2(208, -16)
+[node name="GateEn" parent="GateNode" unique_id=1274218764 instance=ExtResource("4_jivdp")]
+position = Vector2(-303, 116)
+id = "L4Gen"
 
-[node name="CharacterBody2D" parent="." unique_id=1002194499 instance=ExtResource("3_sknj1")]
+[node name="GateEx" parent="GateNode" unique_id=325660369 instance=ExtResource("4_jivdp")]
+position = Vector2(187, -14)
+id = "L4Gex"
+destination_scene = "uid://dmnh64ck0iqnq"
+destination_id = "L5Gen"
+
+[node name="CharacterBody2D" parent="." unique_id=1002194499 instance=ExtResource("5_bv2w0")]
 position = Vector2(-298, 113)
 tilemap_path = NodePath("../Ground")
 spike_tilemap_path = NodePath("../Spike")
 
-[node name="Spike" parent="." unique_id=375803085 instance=ExtResource("4_l4dup")]
+[node name="Spike" parent="." unique_id=375803085 instance=ExtResource("6_p63oh")]
 tile_map_data = PackedByteArray("AADz/wYAAAABAAAAAAD3/wYAAAABAAAAAAD7/wYAAAABAAAAAAD5/wMAAAABAAIAAAD1/wMAAAABAAIAAADz/wgAAAABAAAAAAD0/wgAAAABAAAAAAD1/wgAAAABAAAAAAD2/wgAAAABAAAAAAD3/wgAAAABAAAAAAD4/wgAAAABAAAAAAD5/wgAAAABAAAAAAD6/wgAAAABAAAAAAD7/wgAAAABAAAAAADy/wgAAAADAAEAAAACAAgAAAAEAAEAAAD8/wgAAAABAAAAAAD9/wgAAAABAAAAAAD+/wgAAAABAAAAAAD//wgAAAABAAAAAAAAAAgAAAABAAAAAAABAAgAAAABAAAAAAD//wYAAAABAAAAAAD9/wMAAAABAAIAAAABAAMAAAABAAIAAAD0/wIAAAAAAAEAAAD0/wEAAAAAAAEAAAD0/wAAAAAAAAAAAAD4/wIAAAAAAAEAAAD4/wEAAAAAAAEAAAD4/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAEAAAD8/wIAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAD2/wAAAAACAAAAAAD2/wEAAAACAAEAAAD2/wIAAAACAAEAAAD6/wAAAAACAAAAAAD6/wEAAAACAAEAAAD6/wIAAAACAAEAAAD+/wAAAAACAAAAAAD+/wEAAAACAAEAAAD+/wIAAAACAAEAAAACAAAAAAACAAAAAAACAAEAAAACAAEAAAACAAIAAAACAAEAAAACAAMAAAACAAIAAAD+/wMAAAACAAIAAAD6/wMAAAACAAIAAAD2/wMAAAACAAIAAAD0/wMAAAAAAAIAAAD4/wMAAAAAAAIAAAD8/wMAAAAAAAIAAAAAAAMAAAAAAAIAAAD2//3/AAABAAAAAAD3//3/AAABAAAAAAD4//3/AAABAAAAAAD1//3/AAAAAAAAAAD5//3/AAACAAAAAAAFAAMAAAABAAIAAAAGAAMAAAABAAIAAAAHAAMAAAACAAIAAAACAAcAAAAAAAEAAAACAAYAAAAAAAAAAAAFAAYAAAADAAAAAAAFAAcAAAACAAEAAAAFAAgAAAACAAEAAAAFAAkAAAACAAEAAAADAAMAAAAAAAIAAAAEAAMAAAABAAIAAAAGAAYAAAABAAIAAAAHAAYAAAABAAIAAAAIAAYAAAABAAIAAAAJAAYAAAACAAIAAAAJAAUAAAACAAEAAAAJAAQAAAACAAAAAAAIAAQAAAAAAAAAAADu/wgAAAABAAAAAADt/wgAAAABAAAAAADs/wgAAAABAAAAAADv/wgAAAAEAAEAAADr/wgAAAADAAEAAAA=")
 
-[node name="Decor" parent="." unique_id=1027154604 instance=ExtResource("5_yw4y8")]
+[node name="Decor" parent="." unique_id=1027154604 instance=ExtResource("7_0whu7")]
 
 [node name="CameraTriggerArr" type="Node2D" parent="." unique_id=312845869]
 
-[node name="Default" parent="CameraTriggerArr" unique_id=1501787538 instance=ExtResource("5_sknj1")]
+[node name="Default" parent="CameraTriggerArr" unique_id=1501787538 instance=ExtResource("8_45u3a")]
 position = Vector2(-298, 103)
 target_zoom = 5.0
 zoom_duration = 0.0
 
-[node name="2Option" parent="CameraTriggerArr" unique_id=1937195908 instance=ExtResource("5_sknj1")]
+[node name="2Option" parent="CameraTriggerArr" unique_id=1937195908 instance=ExtResource("8_45u3a")]
 position = Vector2(-240, 17)
 scale = Vector2(1.5, 1.5)
 target_zoom = 2.0
 
-[node name="BottomOpt" parent="CameraTriggerArr" unique_id=995137125 instance=ExtResource("5_sknj1")]
+[node name="BottomOpt" parent="CameraTriggerArr" unique_id=995137125 instance=ExtResource("8_45u3a")]
 position = Vector2(-189, 81)
 scale = Vector2(2, 2)
 target_zoom = 5.0
 zoom_duration = 1.0
 
-[node name="TopOpt" parent="CameraTriggerArr" unique_id=727611710 instance=ExtResource("5_sknj1")]
+[node name="TopOpt" parent="CameraTriggerArr" unique_id=727611710 instance=ExtResource("8_45u3a")]
 position = Vector2(-200, -29)
 target_zoom = 5.0
 zoom_duration = 1.0
