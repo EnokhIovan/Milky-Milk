@@ -110,7 +110,7 @@ material = SubResource("ShaderMaterial_82ry6")
 script = ExtResource("10_xetd2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="heavyMassed/gravityField" unique_id=426269763]
-position = Vector2(-146, 397)
+position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_et608")
 
 [node name="triggerHeavyMassed" type="Area2D" parent="." unique_id=1640777716 node_paths=PackedStringArray("blackhole", "ground_layers", "gravitation_particles")]
