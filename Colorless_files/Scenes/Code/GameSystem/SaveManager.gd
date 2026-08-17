@@ -4,6 +4,7 @@ const SAVE_PATH := "user://savegame.json"
 
 var data := {
 	"completed_levels": [],
+	"current_level": "",
 	"shards" : []
 }
 
