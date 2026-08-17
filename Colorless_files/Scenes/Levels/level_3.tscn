@@ -278,9 +278,9 @@ custom_data_layer_2/name = ""
 custom_data_layer_2/type = 0
 sources/0 = SubResource("TileSetAtlasSource_tmqc5")
 
-[node name="level_d" type="Node2D" unique_id=1910671739]
+[node name="Level3" type="Node2D" unique_id=1910671739]
 script = ExtResource("1_gnji2")
-level_id = "LD"
+level_id = "Level3"
 
 [node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("2_oapm2")]
 

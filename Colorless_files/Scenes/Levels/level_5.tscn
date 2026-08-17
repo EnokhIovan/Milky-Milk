@@ -40,7 +40,7 @@ radius = 566.3533
 
 [node name="Level" type="Node2D" unique_id=400646959]
 script = ExtResource("1_k2k7u")
-level_id = "LC"
+level_id = "Level5"
 
 [node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("2_uw7lu")]
 

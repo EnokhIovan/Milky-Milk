@@ -24,7 +24,7 @@ func _on_body_exited(body: Node2D) -> void:
 func complete_level_if_exit():
 	if id.ends_with("Gex"):
 		var level_id := id.trim_prefix("L").trim_suffix("Gex")
-		SaveManager.complete_level("level_" + level_id)
+		SaveManager.complete_level("Level" + level_id)
 
 func _process(_delta: float) -> void:
 	if player_inside and destination_scene != "" and destination_id != "":

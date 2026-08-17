@@ -280,7 +280,7 @@ sources/0 = SubResource("TileSetAtlasSource_55xad")
 
 [node name="Level1" type="Node2D" unique_id=400646959]
 script = ExtResource("1_55xad")
-level_id = "L1"
+level_id = "Level1"
 
 [node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("1_kraas")]
 

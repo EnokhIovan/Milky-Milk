@@ -21,6 +21,7 @@ func complete_level(level_id: String) -> void:
 func set_current_level(level_id: String) -> void:
 	if not is_level_completed(level_id):
 		data["current_level"] = level_id
+		save_game()
 
 func is_current_level(level_id: String) -> bool:
 	return level_id == data["current_level"]

@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://1gffkf0j38j4" path="res://Colorless_files/Scenes/Links/Decor.tscn" id="7_0whu7"]
 [ext_resource type="PackedScene" uid="uid://cf8qqih2uur4l" path="res://Colorless_files/Scenes/Links/InteractiveScenes/TriggerCam.tscn" id="8_45u3a"]
 
-[node name="LevelA" type="Node2D" unique_id=230637795]
+[node name="Level4" type="Node2D" unique_id=230637795]
 script = ExtResource("1_so01e")
-level_id = "LA"
+level_id = "Level4"
 
 [node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("2_euapt")]
 

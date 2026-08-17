@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://1gffkf0j38j4" path="res://Colorless_files/Scenes/Links/Decor.tscn" id="8_lxyhk"]
 [ext_resource type="PackedScene" uid="uid://cf8qqih2uur4l" path="res://Colorless_files/Scenes/Links/InteractiveScenes/TriggerCam.tscn" id="9_3tm1q"]
 
-[node name="LevelB" type="Node2D" unique_id=670303894]
+[node name="Level2" type="Node2D" unique_id=670303894]
 script = ExtResource("1_m4vwy")
-level_id = "LB"
+level_id = "Level2"
 
 [node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("2_et608")]
 
