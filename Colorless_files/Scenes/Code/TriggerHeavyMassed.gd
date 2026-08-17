@@ -50,8 +50,8 @@ func suck_ground() -> void:
 	# --- sort gabungan berdasarkan posisi X di world, kiri ke kanan ---
 	all_pieces.sort_custom(func(a, b): return a.world_pos.x < b.world_pos.x)
 
-	var delay := 0.0
-	var step := 0.08
+	var delay := 2.0
+	var step := 1.0
 
 	for piece_data in all_pieces:
 		var layer: TileMapLayer = piece_data.layer
