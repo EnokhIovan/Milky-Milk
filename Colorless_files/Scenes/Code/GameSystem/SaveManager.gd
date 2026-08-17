@@ -4,7 +4,7 @@ const SAVE_PATH := "user://savegame.json"
 
 var data := {
 	"completed_levels": [],
-	"current_level": "",
+	"current_level": "Level1",
 	"shards" : []
 }
 
@@ -17,6 +17,13 @@ func complete_level(level_id: String) -> void:
 		save_game()
 
 		print("Level selesai: ", level_id)
+
+func set_current_level(level_id: String) -> void:
+	if not is_level_completed(level_id):
+		data["current_level"] = level_id
+
+func is_current_level(level_id: String) -> bool:
+	return level_id == data["current_level"]
 
 func is_level_completed(level_id: String) -> bool:
 	return level_id in data["completed_levels"]
