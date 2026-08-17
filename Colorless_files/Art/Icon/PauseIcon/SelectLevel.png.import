@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ceujvcm0qtbnm"
-path="res://.godot/imported/Exit.png-1fc702f3d51214c16c2808b07dfb6b4b.ctex"
+uid="uid://bmaolw5lejbir"
+path="res://.godot/imported/SelectLevel.png-0e9713bf631919e33e70c61908ec3f6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Colorless_files/Art/GUI/Icon/Exit.png"
-dest_files=["res://.godot/imported/Exit.png-1fc702f3d51214c16c2808b07dfb6b4b.ctex"]
+source_file="res://Colorless_files/Art/Icon/PauseIcon/SelectLevel.png"
+dest_files=["res://.godot/imported/SelectLevel.png-0e9713bf631919e33e70c61908ec3f6e.ctex"]
 
 [params]
 

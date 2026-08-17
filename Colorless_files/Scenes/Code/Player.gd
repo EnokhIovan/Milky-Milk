@@ -63,6 +63,21 @@ func _purple_paint_count() -> int:
 			count += 1
 	return count
 
+# --- INPUT (mouse/keyboard event-based, otomatis di-skip kalau event ---
+# --- udah "dimakan" duluan sama UI/Button, misal tombol Pause Menu)   ---
+func _unhandled_input(event: InputEvent) -> void:
+	if is_dead or is_teleporting or get_tree().paused:
+		return
+
+	if event.is_action_pressed("paint"):
+		shoot_paint(get_global_mouse_position())
+		Audio.play("paint")
+		get_viewport().set_input_as_handled()
+
+	if event.is_action_pressed("interact"):
+		_try_interact()
+		get_viewport().set_input_as_handled()
+
 func _physics_process(delta):
 	if is_dead:
 		return
@@ -90,19 +105,15 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("color_3") and 2 in allowed_colors:
 		current_color = 2
 	if Input.is_action_just_pressed("color_4") and 3 in allowed_colors:
-		# ungu cuma boleh 1 pasang (2 tile), dan begitu pasangan itu udah
-		# pernah dipake teleport 1x, ungu terkunci sampe pindah level (level_id beda)
-		var state := _get_level_state()
-		if state.get("teleport_used", false) or _purple_paint_count() >= 2:
+		# ungu cuma boleh 1 pasang (2 tile). Begitu pasangan lengkap,
+		# ungu gak bisa dipilih lagi -- kedua tile pasangannya juga
+		# udah dikunci total di shoot_paint() (lihat _is_purple_pair_locked).
+		if _purple_paint_count() >= 2:
 			current_color = 0
 		else:
 			current_color = 3
-	
-	GameState.current_color = current_color
 
-	if Input.is_action_just_pressed("paint"):
-		shoot_paint(get_global_mouse_position())
-		Audio.play("paint")
+	GameState.current_color = current_color
 
 	if is_painting:
 		velocity.x = 0
@@ -142,7 +153,6 @@ func _physics_process(delta):
 		#die()
 
 	_check_landing()
-	check_portal()
 	check_teleport()
 
 func _check_landing() -> void:
@@ -169,7 +179,7 @@ func die() -> void:
 	for i in range(5):
 		tween.tween_property(sprite, "modulate:a", 0.0, 0.1)
 		tween.tween_property(sprite, "modulate:a", 1.0, 0.1)
-	tween.tween_callback(_do_respawn)	
+	tween.tween_callback(_do_respawn)
 
 func _do_respawn() -> void:
 	global_position = spawn_position
@@ -178,7 +188,9 @@ func _do_respawn() -> void:
 	sprite.play("Idle")
 	is_dead = false
 
-func check_portal():
+# Dipanggil dari _unhandled_input, bukan polling lagi -- biar konsisten
+# sama shoot_paint (gak ke-trigger kalau klik/E ketangkep UI duluan).
+func _try_interact() -> void:
 	if decor_tilemap == null:
 		return
 
@@ -191,7 +203,7 @@ func check_portal():
 
 	var target_scene = tile_data.get_custom_data("portal")
 
-	if target_scene != "" and Input.is_action_just_pressed("interact"):
+	if target_scene != "":
 		get_tree().change_scene_to_file(target_scene)
 
 func _on_animation_finished() -> void:
@@ -212,32 +224,44 @@ func shoot_paint(target_pos: Vector2) -> void:
 	var state = _get_level_state()
 	var tiles: Dictionary = state["tiles"]
 
-	if current_color == 3 and (state.get("teleport_used", false) or not _can_paint_purple(tiles, cell)):
-		# udah kepake teleport-nya, atau udah ada 1 pasang aktif -> ungu terkunci
+	# pair ungu udah lengkap (2 tile) & cell ini salah satunya -> dikunci
+	# total, gak bisa dicat ulang jadi warna apapun.
+	if _is_purple_pair_locked(tiles, cell):
 		return
 
-	PaintSystem.paint_one(tilemap, cell, current_color, color_lookup)
+	if current_color == 3 and not _can_paint_purple(tiles, cell):
+		# udah ada 1 pasang ungu aktif di level ini -> gak bisa ngecat
+		# tile BARU jadi ungu sampai pasangan itu dibongkar (salah satu
+		# tilenya dicat ulang jadi warna lain).
+		return
 
-	# Simpan warna tile
+	var painted := PaintSystem.paint_one(tilemap, cell, current_color, color_lookup)
+	if not painted:
+		# gak ada tile di cell itu / kombinasi warna gak ada di tileset ->
+		# gak ada yang berubah secara visual, jangan catat apa-apa ke state.
+		return
+
+	# Simpan warna tile -- cuma kalau beneran kecat
 	tiles[cell] = current_color
 
-# Ungu (color id 3) cuma boleh ada 1 pasang (maksimal 2 tile) sekaligus per level.
+# Ungu (color id 3) cuma boleh ada 1 pasang (maksimal 2 tile) sekaligus
+# per level.
 func _can_paint_purple(tiles: Dictionary, cell: Vector2i) -> bool:
-	# cat ulang tile yang emang udah ungu selalu boleh
+	# recolor tile yang emang udah ungu selalu "boleh" secara hitungan
+	# (gak nambah count baru) -- tapi kalau pair udah lengkap, fungsi ini
+	# gak akan kepanggil sama sekali karena _is_purple_pair_locked udah
+	# nolak duluan di shoot_paint().
 	if tiles.get(cell, -1) == 3:
 		return true
 	return _purple_paint_count() < 2
 
+# Begitu pasangan ungu (2 tile) udah lengkap, KEDUA tile itu dikunci
+# total -- gak bisa dicat ulang jadi warna apapun lagi (termasuk dicat
+# ungu ulang). Ini yang bikin pasangan permanen begitu terbentuk.
+func _is_purple_pair_locked(tiles: Dictionary, cell: Vector2i) -> bool:
+	return tiles.get(cell, -1) == 3 and _purple_paint_count() >= 2
+
 # --- TELEPORT (warna ungu / color id 3) ---
-# Dua tile yang dicat ungu otomatis jadi pasangan teleport permanen --
-# tile-nya TETAP ungu selamanya, gak balik putih. Deteksi pakai collision
-# fisik (sama kayak cek spike), jadi tile ungu harus punya collision solid
-# (biasanya tile di "Ground").
-# Edge-triggered: nginjek tile ungu -> teleport sekali. Selama masih nempel
-# di tile itu gak nge-trigger ulang. Turun lalu injak lagi (tile ungu
-# manapun) -> teleport lagi. Jadi bisa dipakai bolak-balik berkali-kali,
-# tapi tetap cuma ada 1 pasang ungu itu doang di seluruh level (dibatasi
-# lewat _purple_paint_count() pas milih warna / ngecat).
 func check_teleport() -> void:
 	if tilemap == null or is_teleporting:
 		return
@@ -255,15 +279,12 @@ func check_teleport() -> void:
 				break
 
 	if hit_cell == null:
-		# gak lagi nempel tile ungu, arm ulang buat trigger berikutnya
 		_on_teleport_tile = false
 		return
 
 	if _on_teleport_tile and hit_cell == _current_teleport_cell:
-		# masih di tile yang sama kayak hasil teleport terakhir, jangan re-trigger
 		return
 
-	# cari tile ungu lain sebagai pasangannya
 	var target_cell = null
 	for painted_cell in tiles.keys():
 		if painted_cell != hit_cell and tiles[painted_cell] == 3:
@@ -274,9 +295,6 @@ func check_teleport() -> void:
 		_on_teleport_tile = false
 		return
 
-	# tandain "udah pernah dipake" -- ini yang ngunci ungu buat DICAT lagi
-	# (lihat guard di color_4 & shoot_paint). Teleport lewat pasangan yang
-	# udah ada tetap jalan normal (bolak-balik), cuma gak bisa bikin pasangan baru.
 	state["teleport_used"] = true
 
 	_on_teleport_tile = true

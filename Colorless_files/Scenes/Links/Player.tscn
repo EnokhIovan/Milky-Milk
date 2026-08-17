@@ -25,7 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://biepldxmqx1d1" path="res://Colorless_files/Art/Movement/Walk/6.png" id="23_btcdg"]
 [ext_resource type="Texture2D" uid="uid://7xhvlnwpdmmw" path="res://Colorless_files/Art/Movement/Walk/7.png" id="24_m82uv"]
 [ext_resource type="Texture2D" uid="uid://d2jl3nmsuc73f" path="res://Colorless_files/Art/Movement/Walk/8.png" id="25_tlvi4"]
-[ext_resource type="Texture2D" uid="uid://c4ir28uygehoy" path="res://Colorless_files/Art/GUI/Icon/Interact Button.png" id="26_ks05d"]
+[ext_resource type="Texture2D" uid="uid://c4ir28uygehoy" path="res://Colorless_files/Art/Icon/GUI/Interact Button.png" id="26_ks05d"]
+[ext_resource type="PackedScene" uid="uid://ojx7bclkcwtt" path="res://Colorless_files/Scenes/UI/pause_menu.tscn" id="27_t4cyr"]
+[ext_resource type="PackedScene" uid="uid://bcm88jbx0wlq8" path="res://Colorless_files/Scenes/UI/LevelSelection.tscn" id="28_by261"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sinmp"]
 animations = [{
@@ -149,3 +151,6 @@ visible = false
 position = Vector2(0, -39)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("26_ks05d")
+
+[node name="PauseMenu" parent="." unique_id=2048807417 instance=ExtResource("27_t4cyr")]
+select_level_scene = ExtResource("28_by261")
