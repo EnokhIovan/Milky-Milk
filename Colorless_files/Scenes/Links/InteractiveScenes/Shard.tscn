@@ -41,7 +41,7 @@ script = ExtResource("1_cciki")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=909207172]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_kv21n")
-animation = &"PurpleShard"
+animation = &"GreenShard"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1841250815]
 position = Vector2(0, -13)
