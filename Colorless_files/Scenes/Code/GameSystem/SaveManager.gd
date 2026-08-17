@@ -3,7 +3,8 @@ extends Node
 const SAVE_PATH := "user://savegame.json"
 
 var data := {
-	"completed_levels": []
+	"completed_levels": [],
+	"shards" : []
 }
 
 func _ready() -> void:
@@ -18,6 +19,16 @@ func complete_level(level_id: String) -> void:
 
 func is_level_completed(level_id: String) -> bool:
 	return level_id in data["completed_levels"]
+
+func pick_shard(shard_id: String) -> void:
+	if not is_shard_picked(shard_id):
+		data["shards"].append(shard_id)
+		save_game()
+		
+		print("Shard terambil: ", shard_id)
+
+func is_shard_picked(shard_id: String) -> bool:
+	return shard_id in data["shards"]
 
 func save_game() -> void:
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)

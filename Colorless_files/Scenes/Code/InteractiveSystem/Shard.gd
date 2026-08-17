@@ -1,10 +1,16 @@
 extends Area2D
 
+@export var id: String = ""
+
 var player_inside: Node = null
+
 
 
 func _physics_process(_delta: float) -> void:
 	var bodies := get_overlapping_bodies()
+	
+	if SaveManager.is_shard_picked(id):
+		queue_free()
 
 	player_inside = null
 
@@ -19,6 +25,7 @@ func _physics_process(_delta: float) -> void:
 
 		if Input.is_action_just_pressed("interact"):
 			player_inside.interaction_prompt.visible = false
+			SaveManager.pick_shard(id)
 			queue_free()
 	else:
 		for body in get_tree().get_nodes_in_group("player"):
