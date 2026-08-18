@@ -2,17 +2,42 @@ extends Node
 
 const SAVE_PATH := "user://savegame.json"
 
-
 var data := {
-	"items": [],
-	"completed_maps": [],
-	"current_map": "",
-	"player_position": {
-		"x": 0.0,
-		"y": 0.0
-	}
+	"completed_levels": [],
+	"current_level": "Level1",
+	"shards" : []
 }
 
+func _ready() -> void:
+	load_game()
+
+func complete_level(level_id: String) -> void:
+	if not is_level_completed(level_id):
+		data["completed_levels"].append(level_id)
+		save_game()
+
+		print("Level selesai: ", level_id)
+
+func set_current_level(level_id: String) -> void:
+	if not is_level_completed(level_id):
+		data["current_level"] = level_id
+		save_game()
+
+func is_current_level(level_id: String) -> bool:
+	return level_id == data["current_level"]
+
+func is_level_completed(level_id: String) -> bool:
+	return level_id in data["completed_levels"]
+
+func pick_shard(shard_id: String) -> void:
+	if not is_shard_picked(shard_id):
+		data["shards"].append(shard_id)
+		save_game()
+		
+		print("Shard terambil: ", shard_id)
+
+func is_shard_picked(shard_id: String) -> bool:
+	return shard_id in data["shards"]
 
 func save_game() -> void:
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -24,36 +49,32 @@ func save_game() -> void:
 	file.store_string(JSON.stringify(data))
 	file.close()
 
-	print("Game berhasil disimpan")
-
+	print("Game saved")
 
 func load_game() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
-		print("Belum ada save")
+		print("Belum ada save file")
 		return
 
 	var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
 
 	if file == null:
+		print("Gagal membuka save file")
 		return
 
-	var json_text := file.get_as_text()
-	file.close()
-
 	var json := JSON.new()
-	var result := json.parse(json_text)
+	var result := json.parse(file.get_as_text())
+
+	file.close()
 
 	if result != OK:
 		print("Save file rusak")
 		return
 
-	data = json.data
+	if typeof(json.data) == TYPE_DICTIONARY:
+		data = json.data
+		print("SAVE DATA:")
+		print(JSON.stringify(data, "\t"))
 
-	print("Game berhasil diload")
-
-
-func delete_save() -> void:
-	if FileAccess.file_exists(SAVE_PATH):
-		DirAccess.remove_absolute(SAVE_PATH)
-
-	print("Save dihapus")
+	print("Game loaded")
+	print("Completed levels: ", data["completed_levels"])

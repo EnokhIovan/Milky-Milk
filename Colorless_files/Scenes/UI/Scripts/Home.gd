@@ -1,5 +1,4 @@
 extends Control
-
 @onready var fade_overlay: ColorRect = $FadeOverlay
 @onready var start_btn: TextureButton = $MenuGroup/Start
 @onready var option_btn: TextureButton = $MenuGroup/Option
@@ -7,13 +6,11 @@ extends Control
 var _original_positions := {}
 
 func _ready() -> void:
+	MusicPlayer.play("homescreen")
 	fade_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	fade_overlay.color.a = 1.0
 	var tween := create_tween()
 	tween.tween_property(fade_overlay, "color:a", 0.0, 0.6)
-
-	MusicPlayer.play("raining")
-
 	_setup_press_effect(start_btn)
 	_setup_press_effect(option_btn)
 	_setup_press_effect(exit_btn)
@@ -35,7 +32,7 @@ func _on_button_up(btn: TextureButton) -> void:
 
 func _on_start_pressed() -> void:
 	await fade_to_black()
-	get_tree().change_scene_to_file("res://Colorless_files/Scenes/Levels/level_1.tscn")
+	get_tree().change_scene_to_file("res://Colorless_files/Scenes/UI/LevelSelection.tscn")
 
 func _on_option_pressed() -> void:
 	print("buka panel options nanti")

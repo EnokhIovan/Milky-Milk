@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://11kgo1t5akb1"]
 
-[ext_resource type="Script" uid="uid://glnxqo0646eq" path="res://Colorless_files/Scenes/UI/Home.gd" id="1_rtan1"]
+[ext_resource type="Script" uid="uid://glnxqo0646eq" path="res://Colorless_files/Scenes/UI/Scripts/Home.gd" id="1_rtan1"]
 [ext_resource type="Texture2D" uid="uid://dswq5nnlnffx8" path="res://Colorless_files/Art/Background/Home screen.png" id="2_ojyrp"]
-[ext_resource type="Texture2D" uid="uid://c0woa1ebed25b" path="res://Colorless_files/Art/GUI/Icon/Menu1.png" id="2_tuwqx"]
-[ext_resource type="Texture2D" uid="uid://by14amktwpyte" path="res://Colorless_files/Art/GUI/Icon/Start.png" id="3_ojyrp"]
-[ext_resource type="Texture2D" uid="uid://c41m5b2nd0ed0" path="res://Colorless_files/Art/GUI/Icon/Option.png" id="4_he7hr"]
-[ext_resource type="Texture2D" uid="uid://ceujvcm0qtbnm" path="res://Colorless_files/Art/GUI/Icon/Exit.png" id="5_7g1qt"]
+[ext_resource type="Texture2D" uid="uid://c0woa1ebed25b" path="res://Colorless_files/Art/Icon/GUI/Menu1.png" id="2_tuwqx"]
+[ext_resource type="Texture2D" uid="uid://by14amktwpyte" path="res://Colorless_files/Art/Icon/GUI/Start.png" id="3_ojyrp"]
+[ext_resource type="Texture2D" uid="uid://c41m5b2nd0ed0" path="res://Colorless_files/Art/Icon/GUI/Option.png" id="4_he7hr"]
+[ext_resource type="Texture2D" uid="uid://ceujvcm0qtbnm" path="res://Colorless_files/Art/Icon/GUI/Exit.png" id="5_7g1qt"]
 
 [node name="Home" type="Control" unique_id=623321538]
 layout_mode = 3

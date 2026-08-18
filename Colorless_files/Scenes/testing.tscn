@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bberk7udwayps"]
+
+[ext_resource type="Script" uid="uid://cvjeq3xoyyp3w" path="res://Colorless_files/Scenes/Code/Level.gd" id="1_t51uh"]
+[ext_resource type="PackedScene" uid="uid://wgfa6o4pfrcc" path="res://Colorless_files/Scenes/Links/Background.tscn" id="2_c8xgh"]
+[ext_resource type="PackedScene" uid="uid://cq5n3xypxjgqf" path="res://Colorless_files/Scenes/Links/Ground.tscn" id="3_qekpu"]
+[ext_resource type="PackedScene" uid="uid://dk8vo1xp41vu6" path="res://Colorless_files/Scenes/Links/Spike.tscn" id="4_xh0tr"]
+[ext_resource type="PackedScene" uid="uid://bf88xsae3bdmw" path="res://Colorless_files/Scenes/Links/Player.tscn" id="5_an53v"]
+[ext_resource type="PackedScene" uid="uid://b1lvbpaqccf2h" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Shard.tscn" id="6_3jmey"]
+
+[node name="Node2D" type="Node2D" unique_id=906151248]
+script = ExtResource("1_t51uh")
+
+[node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("2_c8xgh")]
+
+[node name="Ground" parent="." unique_id=1623240245 instance=ExtResource("3_qekpu")]
+tile_map_data = PackedByteArray(0, 0, 254, 255, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0)
+
+[node name="Spike" parent="." unique_id=375803085 instance=ExtResource("4_xh0tr")]
+
+[node name="Player" parent="." unique_id=1002194499 instance=ExtResource("5_an53v")]
+tilemap_path = NodePath("../Ground")
+spike_tilemap_path = NodePath("../Spike")
+
+[node name="Shard" parent="." unique_id=1388214261 instance=ExtResource("6_3jmey")]
+position = Vector2(25, -1)
+id = "blue_shard"
