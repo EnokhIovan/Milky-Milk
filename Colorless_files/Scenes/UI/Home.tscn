@@ -33,21 +33,20 @@ offset_right = -225.0
 offset_bottom = -148.0
 
 [node name="Papercanvas" type="TextureButton" parent="MenuGroup" unique_id=415800320]
-modulate = Color(1, 1, 1, 0.47058824)
 layout_mode = 0
-offset_left = 973.0
-offset_top = 363.0
-offset_right = 1162.0
-offset_bottom = 546.0
-scale = Vector2(1.6914326, 1.8697423)
+offset_left = 1008.0
+offset_top = 446.0
+offset_right = 1197.0
+offset_bottom = 629.0
+scale = Vector2(1.9714326, 1.9897429)
 texture_normal = ExtResource("2_tuwqx")
 
 [node name="Start" type="TextureButton" parent="MenuGroup" unique_id=1940485867]
 layout_mode = 0
-offset_left = 899.0
-offset_top = 391.0
-offset_right = 1082.0
-offset_bottom = 452.0
+offset_left = 1027.0
+offset_top = 470.0
+offset_right = 1210.0
+offset_bottom = 531.0
 scale = Vector2(1.6914326, 1.8697423)
 texture_normal = ExtResource("3_ojyrp")
 
@@ -56,20 +55,20 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 867.0
-offset_top = 464.5
-offset_right = 1052.0
-offset_bottom = 528.5
+offset_left = 995.00006
+offset_top = 548.0
+offset_right = 1180.0
+offset_bottom = 612.0
 grow_vertical = 2
 scale = Vector2(1.6914326, 1.8697423)
 texture_normal = ExtResource("4_he7hr")
 
 [node name="Exit" type="TextureButton" parent="MenuGroup" unique_id=1446797914]
 layout_mode = 0
-offset_left = 844.0
-offset_top = 591.0
-offset_right = 1025.0
-offset_bottom = 655.0
+offset_left = 967.0
+offset_top = 683.0
+offset_right = 1148.0
+offset_bottom = 747.0
 scale = Vector2(1.6914326, 1.8697422)
 texture_normal = ExtResource("5_7g1qt")
 

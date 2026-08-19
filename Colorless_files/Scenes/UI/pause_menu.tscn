@@ -23,7 +23,6 @@ grow_horizontal = 0
 texture_normal = ExtResource("3_q2yj1")
 
 [node name="MenuGroup" type="Control" parent="." unique_id=1349407694]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,6 +52,7 @@ offset_right = 175.0
 offset_bottom = 204.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.8800012, 1)
 button_mask = 0
 texture_normal = ExtResource("2_e8sti")
 stretch_mode = 6
@@ -65,12 +65,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -157.5
-offset_top = -204.5
-offset_right = 157.5
-offset_bottom = 204.5
+offset_left = -186.36362
+offset_top = -194.0
+offset_right = 128.63638
+offset_bottom = 215.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.1818179, 1)
 theme_override_constants/separation = 4
 
 [node name="Resume" type="TextureButton" parent="MenuGroup/PauseCanvas/VBoxContainer" unique_id=558183105]
