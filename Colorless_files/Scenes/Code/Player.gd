@@ -32,7 +32,7 @@ var _current_teleport_cell: Vector2i = Vector2i(-999999, -999999)
 @onready var decor_tilemap: TileMapLayer = get_node_or_null(decor_tilemap_path)
 
 func _ready():
-	add_to_group("player")
+	MusicPlayer.play("harmoni")
 	sprite.animation_finished.connect(_on_animation_finished)
 	color_lookup = PaintSystem.build_color_lookup(tilemap)
 	sprite.play("Idle")
