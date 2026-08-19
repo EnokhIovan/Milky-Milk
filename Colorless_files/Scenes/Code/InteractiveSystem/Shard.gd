@@ -8,7 +8,7 @@ func check_shard_color():
 	$AnimatedSprite2D.play(id)
 
 func _on_body_entered(body: CharacterBody2D):
-	if body:
+	if body.is_in_group("player"):
 		body.interaction_prompt.visible = true
 		player_inside = true
 
@@ -24,7 +24,6 @@ func _physics_process(_delta: float) -> void:
 		queue_free()
 	
 	if player_inside == true and Input.is_action_just_pressed("interact"):
-			print("yay")
 			get_tree().current_scene.get_node("Player/InteractionPrompt").visible = false
 			SaveManager.pick_shard(id)
 			queue_free()

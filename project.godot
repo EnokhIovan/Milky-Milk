@@ -28,6 +28,10 @@ SaveManager="*uid://bmcmqep37ecar"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[global_group]
+
+player=""
+
 [input]
 
 ui_accept={

@@ -323,7 +323,7 @@ position = Vector2(-2, -1)
 id = "L1Gen"
 
 [node name="GateEx" parent="GateNode" unique_id=1402522462 instance=ExtResource("7_1hcvg")]
-position = Vector2(591, -95)
+position = Vector2(588, -96)
 id = "L1Gex"
 destination_scene = "uid://dtb8r1tgmdww"
 destination_id = "L2Gen"
