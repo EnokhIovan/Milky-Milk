@@ -11,7 +11,7 @@ func _ready() -> void:
 		for LevelBox in Row.get_children():
 			var index: int = int((LevelBox.name).trim_prefix("LevelBox")) + (int((Row.name).trim_prefix("Row")) - 1)*5
 			var level_id: String = "Level" + str(index)
-			LevelBox.target_scene = "res://Colorless_files/Scenes/Levels/level_" + str(index) + ".tscn"
+			LevelBox.target_scene = "res://Colorless_files/Scenes/Levels/Level" + str(index) + ".tscn"
 			
 			if SaveManager.is_level_completed(level_id) or SaveManager.is_current_level(level_id):
 				LevelBox.get_node("Lock").visible = false
