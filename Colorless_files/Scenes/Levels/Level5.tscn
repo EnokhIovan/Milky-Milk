@@ -41,7 +41,6 @@ radius = 566.3533
 
 [node name="Level" type="Node2D" unique_id=400646959]
 script = ExtResource("1_k2k7u")
-level_id = "Level5"
 
 [node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("2_uw7lu")]
 
@@ -68,7 +67,9 @@ id = "L4Gex"
 [node name="Player" parent="." unique_id=1002194499 instance=ExtResource("5_ltaps")]
 position = Vector2(-302, -80)
 fall_limit_y = 150.0
+allowed_colors = Array[int]([0, 1, 2])
 spike_tilemap_path = NodePath("../Spike")
+level_music = "harmoni"
 
 [node name="Spike" parent="." unique_id=375803085 instance=ExtResource("6_fbjxt")]
 tile_map_data = PackedByteArray("AAAGAAgAAAACAAEAAAAGAAcAAAACAAEAAAAGAAEAAAADAAAAAAAGAAIAAAACAAEAAAAGAAMAAAACAAEAAAAGAAQAAAACAAEAAAAGAAUAAAACAAEAAAAGAAYAAAACAAEAAAD3/wkAAAABAAAAAAD8/wkAAAABAAAAAAAAAAkAAAABAAAAAAD1/wYAAAABAAIAAAD+/wYAAAABAAIAAAD0/wQAAAABAAAAAAD1/wQAAAABAAAAAAD2/wQAAAABAAAAAAD3/wQAAAABAAAAAAD4/wQAAAABAAAAAAD5/wQAAAABAAAAAAD6/wQAAAABAAAAAAD7/wQAAAABAAAAAAD8/wQAAAABAAAAAAD9/wQAAAABAAAAAAD+/wQAAAABAAAAAAD//wQAAAABAAAAAAAAAAQAAAABAAAAAAABAAQAAAABAAAAAAAGAAkAAAACAAEAAAAQAAkAAAABAAAAAAARAAkAAAABAAAAAAASAAkAAAABAAAAAAATAAkAAAABAAAAAAAUAAkAAAABAAAAAADw/wkAAAABAAAAAADx/wkAAAABAAAAAADy/wkAAAABAAAAAAACAAkAAAABAAAAAAADAAkAAAABAAAAAAAEAAkAAAABAAAAAAA=")
@@ -128,7 +129,7 @@ shape = SubResource("CircleShape2D_et608")
 position = Vector2(-91, 131)
 script = ExtResource("11_psidg")
 blackhole = NodePath("../heavyMassed")
-ground_layers = [NodePath(""), NodePath("../Spike"), NodePath("../Decor")]
+ground_layers = [null, NodePath("../Spike"), NodePath("../Decor")]
 gravitation_particles = NodePath("../heavyMassed/heavyGravitation")
 dust_particles_scene = ExtResource("12_hndlb")
 

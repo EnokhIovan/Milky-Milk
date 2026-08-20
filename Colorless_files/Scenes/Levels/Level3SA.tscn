@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cvjeq3xoyyp3w" path="res://Colorless_files/Scenes/Code/Level.gd" id="1_36yvq"]
 [ext_resource type="PackedScene" uid="uid://wgfa6o4pfrcc" path="res://Colorless_files/Scenes/Links/Background.tscn" id="2_8u024"]
 [ext_resource type="PackedScene" uid="uid://b1lvbpaqccf2h" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Shard.tscn" id="3_3jj3l"]
+[ext_resource type="PackedScene" uid="uid://btss0lu3qkk7n" path="res://Colorless_files/Scenes/Links/Rain.tscn" id="3_8u024"]
 [ext_resource type="PackedScene" uid="uid://cq5n3xypxjgqf" path="res://Colorless_files/Scenes/Links/Ground.tscn" id="4_sx4rk"]
 [ext_resource type="PackedScene" uid="uid://8ynswqqim4xh" path="res://Colorless_files/Scenes/Links/SoildGround.tscn" id="5_xh68y"]
 [ext_resource type="PackedScene" uid="uid://bh3evbret5cl6" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Portal.tscn" id="6_qu4at"]
@@ -83,6 +84,9 @@ script = ExtResource("1_36yvq")
 
 [node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("2_8u024")]
 
+[node name="GPUParticles2D" parent="." unique_id=1938238041 instance=ExtResource("3_8u024")]
+position = Vector2(-319, 32)
+
 [node name="Shard" parent="." unique_id=1388214261 instance=ExtResource("3_3jj3l")]
 position = Vector2(80, 7)
 id = "BlueShard"
@@ -110,6 +114,7 @@ destination_id = "L3P2"
 [node name="Player" parent="." unique_id=1002194499 instance=ExtResource("7_2yh7p")]
 position = Vector2(-319, 32)
 shoot_range = 100.0
+allowed_colors = Array[int]([0, 1, 2])
 tilemap_path = NodePath("../Ground")
 spike_tilemap_path = NodePath("../Spike")
 

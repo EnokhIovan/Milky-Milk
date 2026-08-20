@@ -13,6 +13,7 @@ extends CharacterBody2D
 @export var tilemap_path: NodePath
 @export var spike_tilemap_path: NodePath
 @export var decor_tilemap_path: NodePath
+@export var level_music := "raining"
 
 var is_painting := false
 var is_dead := false
@@ -32,7 +33,7 @@ var _current_teleport_cell: Vector2i = Vector2i(-999999, -999999)
 @onready var decor_tilemap: TileMapLayer = get_node_or_null(decor_tilemap_path)
 
 func _ready():
-	MusicPlayer.play("raining")
+	MusicPlayer.play(level_music)
 	sprite.animation_finished.connect(_on_animation_finished)
 	color_lookup = PaintSystem.build_color_lookup(tilemap)
 	sprite.play("Idle")
