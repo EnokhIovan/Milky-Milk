@@ -1,10 +1,11 @@
 extends Node2D
 
-@export var level_id: String = ""
+var level_id: String
 @onready var tilemap: TileMapLayer = $Ground
 var color_lookup: Dictionary
 
 func _ready():
+	level_id = get_tree().current_scene.name
 	SaveManager.set_current_level(level_id)
 	
 	# Beritahu GameState kita sedang berada di level ini

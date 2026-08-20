@@ -62,6 +62,11 @@ static func paint_one(
 	var new_atlas: Vector2i = color_lookup[key]
 	tilemap.set_cell(cell, source_id, new_atlas)
 	
+	var level_id: String = tilemap.get_tree().current_scene.name
+	var state: Dictionary = GameState.get_level_state(level_id)
+	var tiles: Dictionary = state["tiles"]
+	tiles[cell] = current_color
+	
 	return true
 
 

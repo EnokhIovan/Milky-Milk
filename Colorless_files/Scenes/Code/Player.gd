@@ -50,8 +50,7 @@ func _validate_allowed_colors() -> void:
 
 # --- Helper state ---
 func _get_level_state() -> Dictionary:
-	var map = get_tree().current_scene
-	var level_id: String = map.level_id
+	var level_id: String = get_tree().current_scene.name
 	return GameState.get_level_state(level_id)
 
 func _purple_paint_count() -> int:
@@ -239,9 +238,13 @@ func shoot_paint(target_pos: Vector2) -> void:
 		# gak ada tile di cell itu / kombinasi warna gak ada di tileset ->
 		# gak ada yang berubah secara visual, jangan catat apa-apa ke state.
 		return
-
-	# Simpan warna tile -- cuma kalau beneran kecat
-	tiles[cell] = current_color
+	
+	
+	print("SAVE PAINT")
+	print("Level ID: ", get_tree().current_scene.name)
+	print("Cell: ", cell)
+	print("Color: ", current_color)
+	print("State: ", GameState.levels)
 
 # Ungu (color id 3) cuma boleh ada 1 pasang (maksimal 2 tile) sekaligus
 # per level.

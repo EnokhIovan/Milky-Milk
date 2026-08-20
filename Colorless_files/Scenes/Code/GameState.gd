@@ -7,9 +7,10 @@ var levels: Dictionary = {}
 func change_level_state(new_level_id: String) -> void:
 	var new_main_level := get_main_level_id(new_level_id)
 	var current_main_level := get_main_level_id(current_level_id)
-	# Kalau pindah dari L14 ke L15, hapus semua state L14.
+
 	if current_main_level != "" and new_main_level != current_main_level:
 		clear_level()
+
 	current_level_id = new_level_id
 
 func get_main_level_id(level_id: String) -> String:
