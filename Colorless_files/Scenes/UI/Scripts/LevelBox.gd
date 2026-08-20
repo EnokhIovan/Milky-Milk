@@ -8,4 +8,6 @@ func _on_pressed() -> void:
 		return
 	
 	if $Lock.visible == false:
+		TransitionScreen.transition("fade_to_dark")
+		await TransitionScreen._on_transition_finished
 		get_tree().change_scene_to_file(target_scene)

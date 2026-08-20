@@ -156,7 +156,7 @@ func _physics_process(delta):
 func _check_landing() -> void:
 	var on_floor_now := is_on_floor()
 	if on_floor_now and not _was_on_floor:
-		Audio.play("tkss")
+		Audio.play("landing")
 	_was_on_floor = on_floor_now
 
 func _get_shape_global_rect() -> Rect2:

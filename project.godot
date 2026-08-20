@@ -22,6 +22,7 @@ MusicPlayer="*uid://drt6578hndr7j"
 SceneTransition="*uid://m022taungb6u"
 GameState="*uid://y48037ellm86"
 SaveManager="*uid://bmcmqep37ecar"
+TransitionScreen="*uid://bkmmwbai1ki3w"
 
 [display]
 

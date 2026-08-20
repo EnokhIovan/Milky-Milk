@@ -8,13 +8,11 @@ extends Area2D
 
 var player_inside := false
 
-
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_inside = true
 		if destination_scene != "" and destination_id != "":
 			body.interaction_prompt.visible = true
-
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):

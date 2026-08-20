@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://bkmmwbai1ki3w"]
+
+[ext_resource type="Script" uid="uid://dpwcc6p5wn4jh" path="res://Colorless_files/Scenes/Code/TransitionScreen.gd" id="1_sh8s0"]
+[ext_resource type="Texture2D" uid="uid://bmeih7b15yhfi" path="res://Colorless_files/Art/Icon/Loading/Loading Title.png" id="2_5c3f4"]
+
+[sub_resource type="Animation" id="Animation_k6v3o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sh8s0"]
+resource_name = "fade_dark_to_normal"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5c3f4"]
+resource_name = "fade_to_dark"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a3tmd"]
+resource_name = "loading"
+step = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2m7wy"]
+_data = {
+&"RESET": SubResource("Animation_k6v3o"),
+&"fade_dark_to_normal": SubResource("Animation_sh8s0"),
+&"fade_to_dark": SubResource("Animation_5c3f4"),
+&"loading": SubResource("Animation_a3tmd")
+}
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_p2ach"]
+speed_scale = 16.0
+
+[node name="TransitionScreen" type="CanvasLayer" unique_id=825037386]
+script = ExtResource("1_sh8s0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2121680439]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1658576846]
+libraries/ = SubResource("AnimationLibrary_2m7wy")
+
+[node name="Timer" type="Timer" parent="." unique_id=323069368]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1439012944]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -20.0
+offset_right = 82.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(82, 20)
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1071641075]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_p2ach")
+
+[node name="LoadingText" type="TextureRect" parent="HBoxContainer" unique_id=1858413369]
+layout_mode = 2
+texture = ExtResource("2_5c3f4")
