@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cvjeq3xoyyp3w" path="res://Colorless_files/Scenes/Code/Level.gd" id="1_2ug4n"]
 [ext_resource type="PackedScene" uid="uid://wgfa6o4pfrcc" path="res://Colorless_files/Scenes/Links/Background.tscn" id="2_bi7ji"]
+[ext_resource type="PackedScene" uid="uid://btss0lu3qkk7n" path="res://Colorless_files/Scenes/Links/Rain.tscn" id="3_bi7ji"]
 [ext_resource type="PackedScene" uid="uid://b1lvbpaqccf2h" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Shard.tscn" id="3_outvn"]
 [ext_resource type="PackedScene" uid="uid://cq5n3xypxjgqf" path="res://Colorless_files/Scenes/Links/Ground.tscn" id="4_otkip"]
 [ext_resource type="Texture2D" uid="uid://ckfk6i7ndv35o" path="res://Colorless_files/Art/Tiles/Tileset.png" id="5_aoxxk"]
@@ -300,9 +301,11 @@ sources/0 = SubResource("TileSetAtlasSource_55xad")
 
 [node name="Level1" type="Node2D" unique_id=400646959]
 script = ExtResource("1_2ug4n")
-level_id = "Level1"
 
 [node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("2_bi7ji")]
+
+[node name="GPUParticles2D" parent="." unique_id=1938238041 instance=ExtResource("3_bi7ji")]
+position = Vector2(-317, 144)
 
 [node name="Shard" parent="." unique_id=1388214261 instance=ExtResource("3_outvn")]
 position = Vector2(21, 41)

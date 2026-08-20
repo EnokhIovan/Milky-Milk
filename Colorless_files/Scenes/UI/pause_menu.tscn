@@ -23,6 +23,7 @@ grow_horizontal = 0
 texture_normal = ExtResource("3_q2yj1")
 
 [node name="MenuGroup" type="Control" parent="." unique_id=1349407694]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
