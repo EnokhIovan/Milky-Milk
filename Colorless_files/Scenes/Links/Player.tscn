@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://c4ir28uygehoy" path="res://Colorless_files/Art/Icon/GUI/Interact Button.png" id="26_ks05d"]
 [ext_resource type="PackedScene" uid="uid://ojx7bclkcwtt" path="res://Colorless_files/Scenes/UI/pause_menu.tscn" id="27_t4cyr"]
 [ext_resource type="PackedScene" uid="uid://bcm88jbx0wlq8" path="res://Colorless_files/Scenes/UI/LevelSelection.tscn" id="28_by261"]
+[ext_resource type="PackedScene" uid="uid://bd81eah0fu24b" path="res://Colorless_files/Scenes/UI/Hotbar.tscn" id="29_p8g1b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sinmp"]
 animations = [{
@@ -154,3 +155,5 @@ texture = ExtResource("26_ks05d")
 
 [node name="PauseMenu" parent="." unique_id=2048807417 instance=ExtResource("27_t4cyr")]
 select_level_scene = ExtResource("28_by261")
+
+[node name="CanvasLayer" parent="." unique_id=113844937 instance=ExtResource("29_p8g1b")]

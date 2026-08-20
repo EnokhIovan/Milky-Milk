@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bd81eah0fu24b"]
+
+[ext_resource type="Script" uid="uid://chm0b02vxv5cb" path="res://Colorless_files/Scenes/UI/Scripts/Hotbar.gd" id="1_6gsem"]
+[ext_resource type="Texture2D" uid="uid://83pe30yjvajr" path="res://Colorless_files/Art/Icon/GUI/GUI.png" id="1_kh3k8"]
+[ext_resource type="Shader" uid="uid://bho1vdqkja2ki" path="res://Colorless_files/Scenes/UI/Components/Hotbar.gdshader" id="2_j325y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kv21n"]
+shader = ExtResource("2_j325y")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2ach"]
+atlas = ExtResource("1_kh3k8")
+region = Rect2(512, 64, 128, 128)
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=113844937]
+script = ExtResource("1_6gsem")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2076972262]
+material = SubResource("ShaderMaterial_kv21n")
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 76.0
+offset_top = -572.0
+offset_right = 116.0
+offset_bottom = -532.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+pivot_offset = Vector2(20, 20)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1712501641]
+offset_right = 128.0
+offset_bottom = 128.0
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_p2ach")
