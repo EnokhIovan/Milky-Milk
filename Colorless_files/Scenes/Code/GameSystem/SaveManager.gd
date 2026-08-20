@@ -13,10 +13,15 @@ func _ready() -> void:
 
 func complete_level(level_id: String) -> void:
 	if not is_level_completed(level_id):
+		print("Level belum selesai, lanjut")
+
 		data["completed_levels"].append(level_id)
 		save_game()
 
 		print("Level selesai: ", level_id)
+		set_current_level("Level" + str(int(level_id.trim_prefix("Level")) + 1))
+	else:
+		print("Level SUDAH selesai: ", level_id)
 
 func set_current_level(level_id: String) -> void:
 	if not is_level_completed(level_id):

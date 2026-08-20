@@ -12,7 +12,6 @@
 
 [node name="Level4" type="Node2D" unique_id=230637795]
 script = ExtResource("1_so01e")
-level_id = "Level4"
 
 [node name="ParallaxBackground" parent="." unique_id=1109483062 instance=ExtResource("2_euapt")]
 
@@ -30,6 +29,12 @@ id = "L4Gen"
 
 [node name="GateEx" parent="GateNode" unique_id=325660369 instance=ExtResource("4_jivdp")]
 position = Vector2(310, -16)
+id = "L4Gex"
+destination_scene = "uid://dmnh64ck0iqnq"
+destination_id = "L5Gen"
+
+[node name="GateEx2" parent="GateNode" unique_id=827058972 instance=ExtResource("4_jivdp")]
+position = Vector2(-278, 107)
 id = "L4Gex"
 destination_scene = "uid://dmnh64ck0iqnq"
 destination_id = "L5Gen"
