@@ -6,7 +6,6 @@ var color_lookup: Dictionary
 
 func _ready():
 	level_id = get_tree().current_scene.name
-	SaveManager.set_current_level(level_id)
 	
 	# Beritahu GameState kita sedang berada di level ini
 	GameState.change_level_state(level_id)

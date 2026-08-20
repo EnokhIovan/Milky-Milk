@@ -22,6 +22,7 @@ func _on_body_exited(body: Node2D) -> void:
 func complete_level_if_exit():
 	if id.ends_with("Gex"):
 		var level_id := id.trim_prefix("L").trim_suffix("Gex")
+		print("Yey")
 		SaveManager.complete_level("Level" + level_id)
 
 func _process(_delta: float) -> void:
