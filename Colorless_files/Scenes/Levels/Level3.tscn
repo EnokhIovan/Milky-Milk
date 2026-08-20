@@ -325,7 +325,6 @@ destination_id = "L4Gen"
 [node name="PortalNode" type="Node2D" parent="." unique_id=1964106556]
 
 [node name="toSub1" parent="PortalNode" unique_id=504761103 instance=ExtResource("6_si47i")]
-visible = false
 position = Vector2(255, 63)
 id = "L3P1"
 destination_scene = "uid://dx4dw8sv8e0p2"

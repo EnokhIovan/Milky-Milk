@@ -14,6 +14,7 @@ const SINGLE_FILES := {
 	"landing": "res://Colorless_files/Sound/SFX/Landing.wav",
 	"jump": "res://Colorless_files/Sound/SFX/Jumping/Twing Jump.wav",
 	"dead": "res://Colorless_files/Sound/SFX/Dead.wav",
+	"tkss": "res://Colorless_files/Sound/SFX/TKSS.wav",
 }
 
 func _ready() -> void:

@@ -156,7 +156,7 @@ func _physics_process(delta):
 func _check_landing() -> void:
 	var on_floor_now := is_on_floor()
 	if on_floor_now and not _was_on_floor:
-		Audio.play("landing")
+		Audio.play("tkss")
 	_was_on_floor = on_floor_now
 
 func _get_shape_global_rect() -> Rect2:
@@ -238,13 +238,6 @@ func shoot_paint(target_pos: Vector2) -> void:
 		# gak ada tile di cell itu / kombinasi warna gak ada di tileset ->
 		# gak ada yang berubah secara visual, jangan catat apa-apa ke state.
 		return
-	
-	
-	print("SAVE PAINT")
-	print("Level ID: ", get_tree().current_scene.name)
-	print("Cell: ", cell)
-	print("Color: ", current_color)
-	print("State: ", GameState.levels)
 
 # Ungu (color id 3) cuma boleh ada 1 pasang (maksimal 2 tile) sekaligus
 # per level.
