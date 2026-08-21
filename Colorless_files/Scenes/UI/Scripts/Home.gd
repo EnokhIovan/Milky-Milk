@@ -35,7 +35,8 @@ func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://Colorless_files/Scenes/UI/LevelSelection.tscn")
 
 func _on_option_pressed() -> void:
-	print("buka panel options nanti")
+	print("buka panel options nanti, belum dibikin tapi jaid yaudah coming soon dlu aja")
+	get_tree().change_scene_to_file("res://Colorless_files/Scenes/Levels/Level6.tscn")
 
 func _on_exit_pressed() -> void:
 	await fade_to_black()

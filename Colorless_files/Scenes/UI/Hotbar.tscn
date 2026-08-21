@@ -11,7 +11,7 @@ shader = ExtResource("2_j325y")
 atlas = ExtResource("1_kh3k8")
 region = Rect2(512, 64, 128, 128)
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=113844937]
+[node name="Hotbar" type="CanvasLayer" unique_id=113844937]
 script = ExtResource("1_6gsem")
 
 [node name="Control" type="Control" parent="." unique_id=2114921156]

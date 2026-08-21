@@ -1,6 +1,20 @@
-[gd_scene format=3 uid="uid://d0agvmp6qw8jx"]
+[gd_scene format=4 uid="uid://d0agvmp6qw8jx"]
+
+[ext_resource type="PackedScene" uid="uid://8ynswqqim4xh" path="res://Colorless_files/Scenes/Links/SoildGround.tscn" id="1_csc4w"]
+[ext_resource type="PackedScene" uid="uid://cq5n3xypxjgqf" path="res://Colorless_files/Scenes/Links/Ground.tscn" id="2_6ifbm"]
+[ext_resource type="PackedScene" uid="uid://dmwid4xoyvcat" path="res://Colorless_files/Scenes/Links/InteractiveScenes/Gate.tscn" id="3_2c82r"]
+[ext_resource type="PackedScene" uid="uid://ojx7bclkcwtt" path="res://Colorless_files/Scenes/UI/PauseMenu.tscn" id="4_6ifbm"]
+[ext_resource type="PackedScene" uid="uid://bcm88jbx0wlq8" path="res://Colorless_files/Scenes/UI/LevelSelection.tscn" id="5_2c82r"]
 
 [node name="Level6" type="Node2D" unique_id=2031525468]
+
+[node name="SoildGround" parent="." unique_id=185970811 instance=ExtResource("1_csc4w")]
+tile_map_data = PackedByteArray("AAD//wAAAAABAAAAAAAAAAAAAAABAAAAAAABAP//AAAAAAEAAAABAP7/AAAAAAEAAAD+//7/AAACAAEAAAD+////AAACAAEAAAD+/wAAAAAEAAEAAAABAAAAAAAFAAEAAAABAPz/AAAFAAAAAAD+//z/AAAEAAAAAAD///z/AAABAAIAAAAAAPz/AAABAAIAAAD+//3/AAACAAEAAAABAP3/AAAAAAEAAAA=")
+
+[node name="Ground" parent="." unique_id=1623240245 instance=ExtResource("2_6ifbm")]
+
+[node name="Gate" parent="." unique_id=1274218764 instance=ExtResource("3_2c82r")]
+id = "L6Gen"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=765174203]
 
@@ -27,3 +41,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 128
 text = "Coming Soon"
+
+[node name="PauseMenu" parent="." unique_id=2048807417 instance=ExtResource("4_6ifbm")]
+select_level_scene = ExtResource("5_2c82r")
