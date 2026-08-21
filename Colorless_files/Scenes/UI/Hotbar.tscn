@@ -14,21 +14,31 @@ region = Rect2(512, 64, 128, 128)
 [node name="CanvasLayer" type="CanvasLayer" unique_id=113844937]
 script = ExtResource("1_6gsem")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=2076972262]
-material = SubResource("ShaderMaterial_kv21n")
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 76.0
-offset_top = -572.0
-offset_right = 116.0
-offset_bottom = -532.0
-grow_vertical = 0
-scale = Vector2(3, 3)
-pivot_offset = Vector2(20, 20)
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1712501641]
-offset_right = 128.0
-offset_bottom = 128.0
+[node name="Control" type="Control" parent="." unique_id=2114921156]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 scale = Vector2(1.5, 1.5)
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=2076972262]
+material = SubResource("ShaderMaterial_kv21n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.65, 0.65)
+pivot_offset = Vector2(64, 64)
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1712501641]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 64)
 texture = SubResource("AtlasTexture_p2ach")

@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var color_rect = $ColorRect
+@onready var color_rect = $Control/ColorRect
 
 var colors: Array[Color] = [
 	Color.WHITE,
