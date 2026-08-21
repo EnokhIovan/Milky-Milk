@@ -62,7 +62,9 @@ id = "L4Gen"
 
 [node name="GateEx" parent="GateNode" unique_id=1741460986 instance=ExtResource("4_ygkpd")]
 position = Vector2(194, 32)
-id = "L4Gex"
+id = "L5Gex"
+destination_scene = "uid://d0agvmp6qw8jx"
+destination_id = "L6Gen"
 
 [node name="Player" parent="." unique_id=1002194499 instance=ExtResource("5_ltaps")]
 position = Vector2(-302, -80)
@@ -125,13 +127,14 @@ script = ExtResource("10_xetd2")
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_et608")
 
-[node name="triggerHeavyMassed" type="Area2D" parent="." unique_id=1640777716 node_paths=PackedStringArray("blackhole", "ground_layers", "gravitation_particles")]
+[node name="triggerHeavyMassed" type="Area2D" parent="." unique_id=1640777716 node_paths=PackedStringArray("blackhole", "ground_layers", "gravitation_particles", "gravity_field")]
 position = Vector2(-91, 131)
 script = ExtResource("11_psidg")
 blackhole = NodePath("../heavyMassed")
-ground_layers = [null, NodePath("../Spike"), NodePath("../Decor")]
+ground_layers = [NodePath("../Ground"), NodePath("../Spike"), NodePath("../Decor")]
 gravitation_particles = NodePath("../heavyMassed/heavyGravitation")
 dust_particles_scene = ExtResource("12_hndlb")
+gravity_field = NodePath("../heavyMassed/gravityField")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="triggerHeavyMassed" unique_id=1760813329]
 position = Vector2(-180, -222)
